@@ -1,0 +1,58 @@
+[
+  {
+    "_id": "17948174198099ez7d",
+    "title": "Nova Launch Campaign & Outdoor Graphics",
+    "slug": "nova-campaign-graphics",
+    "category": "Marketing & Advertising",
+    "client": "Nova Retail",
+    "description": "Billboard banners, promotional flyers, and digital display ads for high-impact seasonal campaigns.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=800&auto=format&fit=crop",
+    "isFeatured": true,
+    "order": 4,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.809Z",
+    "updatedAt": "2026-11-16T08:23:39.809Z"
+  },
+  {
+    "_id": "1794817419806upb3h",
+    "title": "Nexus Venture Deck & Corporate Profile",
+    "slug": "nexus-venture-profile",
+    "category": "Business Profiles & Presentations",
+    "client": "Nexus Global",
+    "description": "Executive company profile and investor pitch deck designed with crisp information hierarchy.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
+    "isFeatured": true,
+    "order": 3,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.806Z",
+    "updatedAt": "2026-11-16T08:23:39.806Z"
+  },
+  {
+    "_id": "1794817419803wuxpp",
+    "title": "Urban Bloom — Curated Social Media Grid & Story System",
+    "slug": "urban-bloom-social-creatives",
+    "category": "Social Media Creatives",
+    "client": "Urban Bloom Co.",
+    "description": "High-aesthetic carousel templates, story sets, and promotional banners designed for high engagement.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+    "isFeatured": true,
+    "order": 2,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.803Z",
+    "updatedAt": "2026-11-16T08:23:39.803Z"
+  },
+  {
+    "_id": "17948174197994zied",
+    "title": "Apex Dynamics — Visual Identity & Brand System",
+    "slug": "apex-dynamics-branding",
+    "category": "Brand Identity",
+    "client": "Apex Dynamics",
+    "description": "Comprehensive brand identity redesign featuring modern geometry, dynamic typography, and stationery.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop",
+    "isFeatured": true,
+    "order": 1,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.799Z",
+    "updatedAt": "2026-11-16T08:23:39.799Z"
+  }
+]

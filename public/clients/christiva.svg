@@ -1,0 +1,18 @@
+<svg width="320" height="100" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 10)">
+    <!-- Brand Icon -->
+    <circle cx="40" cy="40" r="38" fill="url(#chr_grad)" />
+    <!-- Cross & Wings motif -->
+    <path d="M40 18V62M27 32H53" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22 45C26 52 33 56 40 56C47 56 54 52 58 45" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Wordmark -->
+    <text x="96" y="44" font-family="'Manrope', 'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="900" fill="#071957" letter-spacing="-0.5">CHRISTIVA</text>
+    <text x="97" y="62" font-family="'Inter', system-ui, sans-serif" font-size="9" font-weight="800" fill="#2855CE" letter-spacing="3.5">MINISTRIES</text>
+  </g>
+  <defs>
+    <linearGradient id="chr_grad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E3A8A"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+</svg>

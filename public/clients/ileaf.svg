@@ -1,0 +1,16 @@
+<svg width="320" height="100" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 10)">
+    <!-- Door Emblem -->
+    <rect x="8" y="10" width="60" height="60" rx="8" fill="#047857"/>
+    <!-- Inner Door Panels -->
+    <rect x="15" y="17" width="20" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.2"/>
+    <rect x="39" y="17" width="22" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.2"/>
+    <rect x="15" y="42" width="20" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.2"/>
+    <rect x="39" y="42" width="22" height="21" rx="3" fill="#FFFFFF" fill-opacity="0.2"/>
+    <!-- Leaf curve accent -->
+    <path d="M49 14C49 14 62 18 62 30C62 30 50 32 49 14Z" fill="#34D399"/>
+    <!-- Wordmark -->
+    <text x="82" y="44" font-family="'Manrope', system-ui, sans-serif" font-size="28" font-weight="900" fill="#064E3B" letter-spacing="-0.5">i-LEAF</text>
+    <text x="83" y="62" font-family="'Inter', system-ui, sans-serif" font-size="9" font-weight="800" fill="#059669" letter-spacing="2.5">DOORS &amp; WINDOWS</text>
+  </g>
+</svg>

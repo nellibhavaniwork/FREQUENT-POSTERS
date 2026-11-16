@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "17948174197049rsqi",
+    "email": "frequentposters@redadmin.in",
+    "password": "$2b$10$qFlH1nv/ZaCRbuGFDqXGH.LAQtdmFqf2h8wYG15Lvma.qV3F0wzYG",
+    "role": "superadmin",
+    "mustChangePassword": false,
+    "createdAt": "2026-11-16T08:23:39.704Z",
+    "updatedAt": "2026-11-16T10:36:50.032Z",
+    "lastLogin": "2026-11-16T10:36:50.029Z"
+  }
+]

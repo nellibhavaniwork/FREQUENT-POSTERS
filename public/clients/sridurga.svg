@@ -1,0 +1,14 @@
+<svg width="320" height="100" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 10)">
+    <!-- Designer Emblem Circle -->
+    <circle cx="38" cy="40" r="34" fill="#FDF2F8" stroke="#DB2777" stroke-width="2"/>
+    <!-- Scissors / Stitch motif -->
+    <path d="M28 48C30 48 32 46 32 44C32 42 30 40 28 40C26 40 24 42 24 44C24 46 26 48 28 48Z" stroke="#BE185D" stroke-width="2.5"/>
+    <path d="M48 48C50 48 52 46 52 44C52 42 50 40 48 40C46 40 44 42 44 44C44 46 46 48 48 48Z" stroke="#BE185D" stroke-width="2.5"/>
+    <path d="M30 41L45 27M46 41L31 27" stroke="#BE185D" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="38" cy="34" r="2.5" fill="#F43F5E"/>
+    <!-- Wordmark -->
+    <text x="86" y="42" font-family="'Playfair Display', Georgia, serif" font-size="22" font-weight="900" fill="#831843" letter-spacing="0.5">SRI DURGA</text>
+    <text x="87" y="60" font-family="'Inter', system-ui, sans-serif" font-size="9" font-weight="800" fill="#DB2777" letter-spacing="3.5">LADIES TAILOR</text>
+  </g>
+</svg>

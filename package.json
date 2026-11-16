@@ -1,0 +1,37 @@
+{
+  "name": "frequent-posters",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/scripts/build-css.js && next dev",
+    "build": "node src/scripts/build-css.js && next build",
+    "build:css": "node src/scripts/build-css.js",
+    "start": "next start",
+    "seed": "node --env-file=.env.local src/scripts/seed.js"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^7.0.6",
+    "@tailwindcss/node": "^4.3.3",
+    "@tailwindcss/postcss": "^4.3.3",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
+    "framer-motion": "^14.14.0",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^1.73.0",
+    "mongoose": "^9.12.1",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-hook-form": "^7.92.0",
+    "react-icons": "^5.5.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3"
+  }
+}

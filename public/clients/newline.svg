@@ -1,0 +1,19 @@
+<svg width="320" height="100" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 10)">
+    <!-- Stage emblem -->
+    <rect x="8" y="10" width="58" height="58" rx="14" fill="url(#nl_grad)"/>
+    <!-- Stage production light beam icon -->
+    <path d="M22 47L37 25L52 47H22Z" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="37" cy="38" r="4" fill="#38BDF8"/>
+    <path d="M18 55H56" stroke="#C084FC" stroke-width="3" stroke-linecap="round"/>
+    <!-- Wordmark -->
+    <text x="78" y="42" font-family="'Manrope', system-ui, sans-serif" font-size="24" font-weight="900" fill="#4C1D95" letter-spacing="-0.5">NEWLINE</text>
+    <text x="79" y="60" font-family="'Inter', system-ui, sans-serif" font-size="9" font-weight="800" fill="#7C3AED" letter-spacing="2.5">SHOW PRODUCTION LLP</text>
+  </g>
+  <defs>
+    <linearGradient id="nl_grad" x1="8" y1="10" x2="66" y2="68" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+</svg>

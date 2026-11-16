@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "17948174197312z5s0",
+    "title": "Social Media Workshops",
+    "slug": "social-media-workshops",
+    "tagline": "Learn It. Manage It. Own It.",
+    "description": "Discover how to create, manage and maintain your business social media accounts through practical, beginner-friendly live Zoom training.",
+    "icon": "GraduationCap",
+    "deliverables": [
+      "Beginner-Friendly Live Zoom Sessions",
+      "Hands-on Canva Design for Business Owners",
+      "Meta Business Suite & Schedule Mastery",
+      "Platform-by-Platform Optimization Guide",
+      "Direct Q&A & Post-Session Cheat Sheets"
+    ],
+    "order": 6,
+    "isPublished": true,
+    "isFeatured": true,
+    "createdAt": "2026-11-16T08:23:39.731Z",
+    "updatedAt": "2026-11-16T08:23:39.731Z"
+  },
+  {
+    "_id": "1794817419728yfj96",
+    "title": "Business & Corporate Design",
+    "slug": "business-corporate-design",
+    "tagline": "Professional Designs for Professional Businesses.",
+    "description": "Give your business a polished identity through company profiles, presentations, proposals, branded documents and business communication materials.",
+    "icon": "Briefcase",
+    "deliverables": [
+      "Corporate Company Profile & Pitch Decks",
+      "Executive Business Cards & Branded Stationery",
+      "Client Proposal Templates & Invoices",
+      "Annual Reports & Service Whitepapers",
+      "Email Signatures & Letterheads"
+    ],
+    "order": 5,
+    "isPublished": true,
+    "isFeatured": true,
+    "createdAt": "2026-11-16T08:23:39.728Z",
+    "updatedAt": "2026-11-16T08:23:39.728Z"
+  },
+  {
+    "_id": "17948174197247ohjh",
+    "title": "Marketing & Promotional Design",
+    "slug": "marketing-promotional-design",
+    "tagline": "Make Every Promotion Worth Noticing.",
+    "description": "From promotional posters to brochures, flyers, catalogues and event creatives, we turn your message into visuals that capture attention.",
+    "icon": "Megaphone",
+    "deliverables": [
+      "Product & Service Brochures / Catalogues",
+      "Eye-Catching Flyers & Event Posters",
+      "Digital Ad Creatives (Meta & Google Display)",
+      "Standees, Roll-Up Banners & Billboard Layouts",
+      "Packaging, Labels & Branded Merch Assets"
+    ],
+    "order": 4,
+    "isPublished": true,
+    "isFeatured": true,
+    "createdAt": "2026-11-16T08:23:39.724Z",
+    "updatedAt": "2026-11-16T08:23:39.724Z"
+  },
+  {
+    "_id": "1794817419720afj5b",
+    "title": "Digital Business Setup",
+    "slug": "digital-business-setup",
+    "tagline": "Your Business Belongs Online.",
+    "description": "Build a professional digital identity across Instagram, Facebook, LinkedIn, Google Business Profile, YouTube and other relevant platforms.",
+    "icon": "Globe",
+    "deliverables": [
+      "Google Business Profile Setup & Local SEO Verification",
+      "Instagram & Facebook Business Account Configuration",
+      "LinkedIn Company Page & Showcase Setup",
+      "Meta Business Suite Integration & Pixel Setup",
+      "WhatsApp Business Catalog & Quick Replies Setup"
+    ],
+    "order": 3,
+    "isPublished": true,
+    "isFeatured": true,
+    "createdAt": "2026-11-16T08:23:39.720Z",
+    "updatedAt": "2026-11-16T08:23:39.720Z"
+  },
+  {
+    "_id": "1794817419717rvxsj",
+    "title": "Social Media Design & Management",
+    "slug": "social-media-design-management",
+    "tagline": "Don't Just Post. Make an Impact.",
+    "description": "Your social media is your brand’s digital voice. We help you maintain a professional presence through creative content, engaging visuals and consistent communication.",
+    "icon": "Share2",
+    "deliverables": [
+      "Curated Monthly Content Calendars",
+      "High-Converting Carousel & Single Post Creatives",
+      "Engaging Story Sets & Promotional Banners",
+      "Captivating Reel Covers & Video Thumbnails",
+      "Captions, Hashtag Strategy & Scheduling"
+    ],
+    "order": 2,
+    "isPublished": true,
+    "isFeatured": true,
+    "createdAt": "2026-11-16T08:23:39.717Z",
+    "updatedAt": "2026-11-16T08:23:39.717Z"
+  },
+  {
+    "_id": "1794817419711ewsf0",
+    "title": "Brand Identity & Logo Design",
+    "slug": "brand-identity-logo-design",
+    "tagline": "Be Recognized. Be Remembered.",
+    "description": "Your brand deserves a visual identity that reflects its personality. From logos to complete business branding, we create designs that make every first impression count.",
+    "icon": "Palette",
+    "deliverables": [
+      "Custom Logo Design & Variations",
+      "Brand Color Palette & Typography Guidelines",
+      "Brand Style Guide & Iconography",
+      "Social Media Profile Avatar & Banner Kits",
+      "Print & Vector Export Formats (AI, SVG, PDF, PNG)"
+    ],
+    "order": 1,
+    "isPublished": true,
+    "isFeatured": true,
+    "createdAt": "2026-11-16T08:23:39.711Z",
+    "updatedAt": "2026-11-16T08:23:39.711Z"
+  }
+]

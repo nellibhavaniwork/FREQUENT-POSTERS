@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #071957;
+  --navy-dark: #05123d;
+  --blue: #2855CE;
+  --cyan: #36A9DB;
+  --teal: #36C6A0;
+  --soft-bg: #F5F8FF;
+  --ink: #111B42;
+  --muted: #64708E;
+  --line: #E5ECF7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #111B42;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+h1:not(.text-white),
+h2:not(.text-white),
+h3:not(.text-white),
+h4:not(.text-white),
+h5:not(.text-white),
+h6:not(.text-white) {
+  color: #111B42;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+/* Custom Utilities */
+.brand-gradient {
+  background: linear-gradient(112deg, #2855CE 0%, #36A9DB 60%, #36C6A0 100%);
+}
+
+.brand-gradient-text {
+  background: linear-gradient(112deg, #2855CE 0%, #36A9DB 60%, #36C6A0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-navy-gradient {
+  background: linear-gradient(135deg, #071957 0%, #102573 50%, #0d3b8f 100%);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(7, 25, 87, 0.05);
+}
+
+.card-shadow-hover:hover {
+  box-shadow: 0 20px 45px rgba(7, 25, 87, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Subtle Agency Floating & Glow Keyframes */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-1deg);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 4s ease-in-out infinite;
+}

@@ -1,0 +1,13 @@
+<svg width="320" height="100" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 10)">
+    <!-- TV / Screen monitor frame -->
+    <rect x="8" y="14" width="60" height="44" rx="6" fill="#0C4A6E" stroke="#0284C7" stroke-width="2"/>
+    <!-- Stand -->
+    <path d="M30 58H46M38 58V66M28 66H48" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Display pulse / check fix line -->
+    <path d="M16 36L26 36L31 26L38 46L44 33L49 36L60 36" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Wordmark -->
+    <text x="82" y="44" font-family="'Manrope', system-ui, sans-serif" font-size="26" font-weight="900" fill="#0C4A6E" letter-spacing="-0.5">EKRAN<tspan fill="#0284C7">FIX</tspan></text>
+    <text x="84" y="62" font-family="'Inter', system-ui, sans-serif" font-size="8.5" font-weight="800" fill="#0369A1" letter-spacing="3">DISPLAY &amp; TECH SOLUTIONS</text>
+  </g>
+</svg>

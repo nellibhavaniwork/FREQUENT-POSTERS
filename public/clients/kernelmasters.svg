@@ -1,0 +1,20 @@
+<svg width="320" height="100" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 10)">
+    <!-- Chip Base -->
+    <rect x="6" y="12" width="56" height="56" rx="10" fill="#0F172A"/>
+    <!-- Chip Pins -->
+    <rect x="18" y="6" width="6" height="6" rx="1" fill="#38BDF8"/>
+    <rect x="30" y="6" width="6" height="6" rx="1" fill="#38BDF8"/>
+    <rect x="42" y="6" width="6" height="6" rx="1" fill="#38BDF8"/>
+    <rect x="18" y="68" width="6" height="6" rx="1" fill="#38BDF8"/>
+    <rect x="30" y="68" width="6" height="6" rx="1" fill="#38BDF8"/>
+    <rect x="42" y="68" width="6" height="6" rx="1" fill="#38BDF8"/>
+    <!-- Prompt terminal inside chip -->
+    <path d="M22 34L32 40L22 46" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36" y1="46" x2="46" y2="46" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+    <!-- Wordmark -->
+    <text x="76" y="43" font-family="'Manrope', system-ui, sans-serif" font-size="22" font-weight="900" fill="#0F172A" letter-spacing="-0.5">KERNEL</text>
+    <text x="172" y="43" font-family="'Manrope', system-ui, sans-serif" font-size="22" font-weight="800" fill="#0284C7" letter-spacing="-0.5">MASTERS</text>
+    <text x="78" y="61" font-family="'Inter', system-ui, sans-serif" font-size="8.5" font-weight="800" fill="#64748B" letter-spacing="2.5">LINUX &amp; EMBEDDED ACADEMY</text>
+  </g>
+</svg>

@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "1794817419768yrj1a",
+    "name": "Christiva Ministries",
+    "description": "Community outreach and spiritual publication identity.",
+    "order": 9,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.768Z",
+    "updatedAt": "2026-11-16T08:23:39.768Z",
+    "logoUrl": "/clients/christiva.svg"
+  },
+  {
+    "_id": "1794817419766oj7q6",
+    "name": "i-Leaf Doors & Windows",
+    "description": "Architectural steel doors and interior solutions.",
+    "order": 8,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.766Z",
+    "updatedAt": "2026-11-16T08:23:39.766Z",
+    "logoUrl": "/clients/ileaf.svg"
+  },
+  {
+    "_id": "17948174197635m25v",
+    "name": "Kernel Masters",
+    "description": "Specialized embedded systems & Linux engineering academy.",
+    "order": 7,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.763Z",
+    "updatedAt": "2026-11-16T08:23:39.763Z",
+    "logoUrl": "/clients/kernelmasters.svg"
+  },
+  {
+    "_id": "1794817419759bo73o",
+    "name": "Golden Eye Security",
+    "description": "Comprehensive commercial & residential security solutions.",
+    "order": 6,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.759Z",
+    "updatedAt": "2026-11-16T08:23:39.759Z",
+    "logoUrl": "/clients/goldeneye.svg"
+  },
+  {
+    "_id": "1794817419754y7m9t",
+    "name": "Sri Durga Ladies Tailor",
+    "description": "Bespoke traditional & modern designer boutique.",
+    "order": 5,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.754Z",
+    "updatedAt": "2026-11-16T08:23:39.754Z",
+    "logoUrl": "/clients/sridurga.svg"
+  },
+  {
+    "_id": "1794817419751rygqz",
+    "name": "Swift Digitals",
+    "description": "Digital printing & promotional graphics provider.",
+    "order": 4,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.751Z",
+    "updatedAt": "2026-11-16T08:23:39.751Z",
+    "logoUrl": "/clients/swiftdigitals.svg"
+  },
+  {
+    "_id": "1794817419748mzwjk",
+    "name": "Newline Show Production LLP",
+    "description": "Entertainment, stage & show production specialists.",
+    "order": 3,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.748Z",
+    "updatedAt": "2026-11-16T08:23:39.748Z",
+    "logoUrl": "/clients/newline.svg"
+  },
+  {
+    "_id": "1794817419745hr923",
+    "name": "Traditions Event Management & Marketing",
+    "description": "Premier event planning & marketing agency.",
+    "order": 2,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.745Z",
+    "updatedAt": "2026-11-16T08:23:39.745Z",
+    "logoUrl": "/clients/traditions.svg"
+  },
+  {
+    "_id": "17948174197427894v",
+    "name": "Ekranfix",
+    "description": "Tech repair & display solutions brand.",
+    "order": 1,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.742Z",
+    "updatedAt": "2026-11-16T08:23:39.742Z",
+    "logoUrl": "/clients/ekranfix.svg"
+  }
+]

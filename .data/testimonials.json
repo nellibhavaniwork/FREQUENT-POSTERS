@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "1794817419814l8kje",
+    "name": "Kavitha V.",
+    "company": "Sri Durga Ladies Tailor",
+    "designation": "Founder & Proprietor",
+    "content": "The 1-to-1 live workshop with Bhavani helped me understand Instagram and Canva with zero technical background. Our enquiries have grown consistently ever since!",
+    "rating": 5,
+    "order": 2,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.814Z",
+    "updatedAt": "2026-11-16T08:23:39.814Z"
+  },
+  {
+    "_id": "179481741981066aph",
+    "name": "Ramesh Reddy",
+    "company": "Newline Show Production LLP",
+    "designation": "Managing Director",
+    "content": "Frequent Posters elevated our visual presence completely. The social media assets and event branding they produced set a new benchmark for our productions.",
+    "rating": 5,
+    "order": 1,
+    "isPublished": true,
+    "createdAt": "2026-11-16T08:23:39.810Z",
+    "updatedAt": "2026-11-16T08:23:39.810Z"
+  }
+]
