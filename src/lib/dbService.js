@@ -1,24 +1,67 @@
 import fs from 'fs';
 import path from 'path';
 
-const DATA_DIR = path.join(process.cwd(), '.data');
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+// Root directory for read-only bundled data
+const BUNDLED_DATA_DIR = path.join(process.cwd(), '.data');
+
+// On serverless environments like Vercel/AWS Lambda, process.cwd() is read-only (/var/task).
+// Only /tmp is writable.
+function getWritableDataDir() {
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.cwd().startsWith('/var/task')) {
+    const tmpDir = path.join('/tmp', '.data');
+    if (!fs.existsSync(tmpDir)) {
+      try {
+        fs.mkdirSync(tmpDir, { recursive: true });
+      } catch (e) {
+        // ignore
+      }
+    }
+    return tmpDir;
+  }
+  if (!fs.existsSync(BUNDLED_DATA_DIR)) {
+    try {
+      fs.mkdirSync(BUNDLED_DATA_DIR, { recursive: true });
+    } catch (e) {
+      // ignore
+    }
+  }
+  return BUNDLED_DATA_DIR;
 }
 
 export function getLocalData(collectionName) {
-  const file = path.join(DATA_DIR, `${collectionName}.json`);
-  if (!fs.existsSync(file)) return null;
-  try {
-    return JSON.parse(fs.readFileSync(file, 'utf-8'));
-  } catch {
-    return null;
+  const writableDir = getWritableDataDir();
+  const writableFile = path.join(writableDir, `${collectionName}.json`);
+
+  // First check if a modified version exists in writable dir
+  if (fs.existsSync(writableFile)) {
+    try {
+      return JSON.parse(fs.readFileSync(writableFile, 'utf-8'));
+    } catch {
+      // fall through
+    }
   }
+
+  // Fallback to bundled data directory
+  const bundledFile = path.join(BUNDLED_DATA_DIR, `${collectionName}.json`);
+  if (fs.existsSync(bundledFile)) {
+    try {
+      return JSON.parse(fs.readFileSync(bundledFile, 'utf-8'));
+    } catch {
+      return null;
+    }
+  }
+
+  return null;
 }
 
 export function setLocalData(collectionName, data) {
-  const file = path.join(DATA_DIR, `${collectionName}.json`);
-  fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf-8');
+  const writableDir = getWritableDataDir();
+  const file = path.join(writableDir, `${collectionName}.json`);
+  try {
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (err) {
+    console.warn(`[dbService] Unable to write to ${file}: ${err.message}`);
+  }
 }
 
 export async function dbFind(collectionName, query = {}, sort = { createdAt: -1 }) {
@@ -31,9 +74,11 @@ export async function dbFind(collectionName, query = {}, sort = { createdAt: -1 
 
 export async function dbFindOne(collectionName, query = {}) {
   const data = getLocalData(collectionName) || [];
-  return data.find((item) => {
-    return Object.entries(query).every(([k, v]) => item[k] === v);
-  }) || null;
+  return (
+    data.find((item) => {
+      return Object.entries(query).every(([k, v]) => item[k] === v);
+    }) || null
+  );
 }
 
 export async function dbCreate(collectionName, doc) {

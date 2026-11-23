@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { dbFind } from '../../lib/dbService.js';
 import { HiArrowRight } from 'react-icons/hi2';
+import { getClientLogo } from '../../lib/clientLogoHelper.js';
 
 export const metadata = {
   title: 'Our Clients | Frequent Posters',
@@ -41,29 +42,17 @@ export default async function ClientsPage() {
               >
                 <div>
                   <div className="w-full h-16 sm:h-20 flex items-center justify-start mb-6">
-                    <img
-                      src={`/clients/${
-                        client.name.toLowerCase().includes('christiva')
-                          ? 'christiva.svg'
-                          : client.name.toLowerCase().includes('leaf')
-                          ? 'ileaf.svg'
-                          : client.name.toLowerCase().includes('kernel')
-                          ? 'kernelmasters.svg'
-                          : client.name.toLowerCase().includes('golden')
-                          ? 'goldeneye.svg'
-                          : client.name.toLowerCase().includes('durga')
-                          ? 'sridurga.svg'
-                          : client.name.toLowerCase().includes('swift')
-                          ? 'swiftdigitals.svg'
-                          : client.name.toLowerCase().includes('newline')
-                          ? 'newline.svg'
-                          : client.name.toLowerCase().includes('tradition')
-                          ? 'traditions.svg'
-                          : 'ekranfix.svg'
-                      }`}
-                      alt={`${client.name} official logo`}
-                      className="max-h-full max-w-[240px] object-contain drop-shadow-sm"
-                    />
+                    {getClientLogo(client) ? (
+                      <img
+                        src={getClientLogo(client)}
+                        alt={`${client.name} official logo`}
+                        className="max-h-full max-w-[240px] object-contain drop-shadow-sm"
+                      />
+                    ) : (
+                      <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-[#2855CE] font-black text-xl shadow-sm">
+                        {client.name.charAt(0)}
+                      </div>
+                    )}
                   </div>
                   <h2 className="text-xl font-extrabold text-[#071957] mb-2">
                     {client.name}

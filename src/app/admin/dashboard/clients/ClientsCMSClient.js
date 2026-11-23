@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Plus, Edit, Trash2, X } from 'lucide-react';
 import CloudinaryUploader from '../../../../components/admin/CloudinaryUploader.js';
+import { getClientLogo } from '../../../../lib/clientLogoHelper.js';
 
 export default function ClientsCMSClient({ initialClients }) {
   const router = useRouter();
@@ -117,8 +118,18 @@ export default function ClientsCMSClient({ initialClients }) {
             className="bg-white border border-slate-200 rounded-2xl p-6 card-shadow flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-[#2855CE] font-black text-lg mb-4">
-                {c.name.charAt(0)}
+              <div className="w-16 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center p-1.5 mb-4 overflow-hidden">
+                {getClientLogo(c) ? (
+                  <img
+                    src={getClientLogo(c)}
+                    alt={c.name}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                ) : (
+                  <span className="text-[#2855CE] font-black text-lg">
+                    {c.name.charAt(0)}
+                  </span>
+                )}
               </div>
               <h3 className="font-extrabold text-[#071957] text-base mb-1">{c.name}</h3>
               <p className="text-xs text-slate-500 mb-4">{c.description}</p>

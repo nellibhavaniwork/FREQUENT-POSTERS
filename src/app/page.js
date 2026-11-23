@@ -18,6 +18,7 @@ import {
   RiDoubleQuotesL,
 } from 'react-icons/ri';
 import { dbFind, dbFindOne } from '../lib/dbService.js';
+import { getClientLogo } from '../lib/clientLogoHelper.js';
 
 export const revalidate = 0; // Dynamic server-rendered with real-time updates
 
@@ -525,29 +526,19 @@ export default async function HomePage() {
                   className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-6 flex flex-col justify-between items-center text-center hover:border-blue-400 card-shadow hover:shadow-lg transition-all group"
                 >
                   <div className="w-full h-14 sm:h-16 flex items-center justify-center shrink-0 mb-3 px-2">
-                    <img
-                      src={`/clients/${
-                        client.name.toLowerCase().includes('christiva')
-                          ? 'christiva.svg'
-                          : client.name.toLowerCase().includes('leaf')
-                          ? 'ileaf.svg'
-                          : client.name.toLowerCase().includes('kernel')
-                          ? 'kernelmasters.svg'
-                          : client.name.toLowerCase().includes('golden')
-                          ? 'goldeneye.svg'
-                          : client.name.toLowerCase().includes('durga')
-                          ? 'sridurga.svg'
-                          : client.name.toLowerCase().includes('swift')
-                          ? 'swiftdigitals.svg'
-                          : client.name.toLowerCase().includes('newline')
-                          ? 'newline.svg'
-                          : client.name.toLowerCase().includes('tradition')
-                          ? 'traditions.svg'
-                          : 'ekranfix.svg'
-                      }`}
-                      alt={`${client.name} official logo`}
-                      className="max-h-full max-w-full object-contain filter drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
-                    />
+                    {getClientLogo(client) ? (
+                      <img
+                        src={getClientLogo(client)}
+                        alt={`${client.name} official logo`}
+                        className="max-h-full max-w-full object-contain filter drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-blue-50 to-teal-50 flex items-center justify-center text-center">
+                        <span className="text-[#2855CE] font-black text-lg sm:text-xl block leading-none">
+                          {client.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <div className="w-full flex-1 flex flex-col justify-center">
                     <h3 className="font-extrabold text-[#071957] text-xs sm:text-sm mb-1 line-clamp-2">
