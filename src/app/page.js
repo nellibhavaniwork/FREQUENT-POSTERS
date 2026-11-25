@@ -17,6 +17,7 @@ import {
   RiGraduationCapLine,
   RiDoubleQuotesL,
 } from 'react-icons/ri';
+import { FaWhatsapp } from 'react-icons/fa6';
 import { dbFind, dbFindOne } from '../lib/dbService.js';
 import { getClientLogo } from '../lib/clientLogoHelper.js';
 
@@ -356,10 +357,83 @@ export default async function HomePage() {
       {/* 5. TRAINING HIGHLIGHT: FREQUENT POSTERS ACADEMY */}
       <section className="py-24 bg-gradient-to-b from-[#F5F8FF] to-white border-y border-slate-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Visual Showcase Split Card */}
+          <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-10 card-shadow mb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Blueprint Card */}
+            <div className="lg:col-span-5 bg-gradient-to-tr from-[#071957] via-[#0e2c7a] to-[#0759d0] rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl">
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#36C6A0] bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
+                  PRACTICAL &bull; LEARN WITH US
+                </span>
+                <span className="text-[10px] font-bold text-blue-200 bg-white/10 px-2.5 py-1 rounded-md">
+                  LIVE ON ZOOM
+                </span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-3 !text-white" style={{ color: '#ffffff' }}>
+                Take Your <br />
+                Business Online.
+              </h3>
+              <p className="text-xs text-blue-100/90 leading-relaxed mb-6">
+                Learn how to create and manage a professional social media presence step by step.
+              </p>
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
+                {['Instagram', 'Facebook', 'LinkedIn', 'YouTube', 'Google Business', 'Canva', 'WhatsApp', 'Meta Business'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/10 transition-colors"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="lg:col-span-7 space-y-4 sm:pl-4">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#2855CE] block">
+                PRACTICAL GUIDANCE
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black text-[#071957] tracking-tight leading-tight">
+                You Run the Business. <br />
+                <span className="brand-gradient-text">We&apos;ll Show You the Tools.</span>
+              </h2>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Social media doesn&apos;t have to feel complicated. Our beginner-friendly 2-week workshops introduce the everyday tools and essentials of creating, managing, and maintaining your own business presence.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-semibold text-slate-700">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#36C6A0]" />
+                  <span>Live Zoom Q&amp;A Screen Shares</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#36C6A0]" />
+                  <span>Beginner-Friendly</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#36C6A0]" />
+                  <span>Recorded for Later Review</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#36C6A0]" />
+                  <span>Templates Included</span>
+                </div>
+              </div>
+              <div className="pt-4">
+                <Link
+                  href="/workshops"
+                  className="brand-gradient text-white font-black text-xs px-6 py-3.5 rounded-xl shadow-md inline-flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
+                >
+                  <span>Explore Training Options</span>
+                  <HiArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-8">
               <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-[#2855CE] mb-2">
-                INTRODUCING — LEARN WITH FREQUENT POSTERS
+                WORKSHOPS &amp; PRICING
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-[#071957] tracking-tight">
                 Your Business. Your Social Media. <br />
@@ -369,16 +443,16 @@ export default async function HomePage() {
                 Stop Guessing. Start Learning.
               </p>
               <p className="text-slate-600 mt-3 text-base max-w-2xl leading-relaxed">
-                Discover how to create, manage and scale your business social media presence through beginner-friendly, hands-on live Zoom sessions. No prior design or technical background required.
+                Discover how to create, manage and scale your business social media presence through beginner-friendly, hands-on live Zoom sessions.
               </p>
             </div>
 
             <div className="lg:col-span-4 lg:text-right">
               <Link
-                href="/learn-with-us"
+                href="/workshops"
                 className="brand-gradient text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-md inline-flex items-center gap-2"
               >
-                <span>Explore Academy Details</span>
+                <span>View All Workshops</span>
                 <HiArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -714,28 +788,37 @@ export default async function HomePage() {
       {/* 9. FINAL CALL TO ACTION */}
       <section className="py-24 bg-gradient-to-r from-[#06144c] via-[#0744a4] to-[#0099c1] text-white text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Your Brand Deserves More Than Ordinary. <br />
-            Let&apos;s Create Something People Remember.
+          <span className="text-xs font-black uppercase tracking-widest text-[#36C6A0] block">
+            CREATIVE DIRECTION &amp; DESIGN
+          </span>
+          <h2
+            className="text-3xl sm:text-5xl font-black text-white tracking-tight !text-white"
+            style={{ color: '#ffffff' }}
+          >
+            Your Next Big Impression <br />
+            Starts Here.
           </h2>
-          <p className="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Ready to establish a standout brand identity, revamp your social media creatives, or master digital tools? Let&apos;s start today.
+          <p
+            className="text-blue-100 text-sm sm:text-base max-w-xl mx-auto leading-relaxed"
+            style={{ color: '#dbeafe' }}
+          >
+            Whether you&apos;re seeking a fresh brand identity, compelling social media campaigns, or accessible digital training, we help your business move forward.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Link
               href="/contact"
-              className="bg-white text-[#071957] font-extrabold text-sm px-8 py-4 rounded-xl shadow-xl hover:bg-slate-100 active:scale-95 transition-all"
+              className="bg-white text-[#071957] font-black text-xs px-8 py-4 rounded-xl shadow-xl hover:bg-slate-100 active:scale-95 transition-all"
             >
-              Start Your Project
+              Get In Touch With Us
             </Link>
             <a
-              href="https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20start%20a%20project%20with%20you!"
+              href={`https://wa.me/${(settings?.whatsapp || '917780271948').replace(/\D/g, '')}?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20start%20a%20project%20with%20you!`}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-white/60 hover:border-white text-white font-extrabold text-sm px-8 py-4 rounded-xl bg-white/10 backdrop-blur-sm transition-all flex items-center gap-2"
+              className="border-2 border-white/60 hover:border-white text-white font-extrabold text-xs px-8 py-4 rounded-xl bg-white/10 backdrop-blur-sm transition-all flex items-center gap-2"
             >
-              <span className="w-2 h-2 rounded-full bg-[#36C6A0] animate-ping" />
-              Chat on WhatsApp (+91 7780271948)
+              <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
+              <span>Chat on WhatsApp</span>
             </a>
           </div>
         </div>

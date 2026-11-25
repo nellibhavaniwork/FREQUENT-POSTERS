@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Edit, Trash2, X, Star } from 'lucide-react';
+import { Plus, Edit, Trash2, X, Star, Loader2 } from 'lucide-react';
+import { showSuccessAlert, showErrorAlert, showConfirmAlert } from '../../../../lib/alerts.js';
 
 export default function TestimonialsCMSClient({ initialTestimonials }) {
   const router = useRouter();
@@ -10,6 +11,7 @@ export default function TestimonialsCMSClient({ initialTestimonials }) {
   const [editingItem, setEditingItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   const [form, setForm] = useState({
     name: '',
@@ -48,6 +50,7 @@ export default function TestimonialsCMSClient({ initialTestimonials }) {
 
   const handleSave = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
 
     try {
@@ -59,6 +62,7 @@ export default function TestimonialsCMSClient({ initialTestimonials }) {
         });
         const updated = await res.json();
         setReviews(reviews.map((i) => (i._id === editingItem._id ? updated : i)));
+        showSuccessAlert('Review Updated', `${form.name}'s testimonial has been saved.`);
       } else {
         const res = await fetch('/api/admin/testimonials', {
           method: 'POST',
@@ -67,24 +71,32 @@ export default function TestimonialsCMSClient({ initialTestimonials }) {
         });
         const created = await res.json();
         setReviews([...reviews, created]);
+        showSuccessAlert('Review Added', `New testimonial from ${form.name} added.`);
       }
       setModalOpen(false);
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Save Failed', err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this testimonial?')) return;
+  const handleDelete = async (id, name) => {
+    if (deletingId) return;
+    const confirmed = await showConfirmAlert(`Delete review by ${name || 'client'}?`, 'This testimonial will be removed from your website.');
+    if (!confirmed) return;
+
+    setDeletingId(id);
     try {
       await fetch(`/api/admin/testimonials/${id}`, { method: 'DELETE' });
       setReviews(reviews.filter((r) => r._id !== id));
+      showSuccessAlert('Review Deleted');
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Delete Failed', err.message);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -124,11 +136,19 @@ export default function TestimonialsCMSClient({ initialTestimonials }) {
             </div>
 
             <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-end gap-2">
-              <button onClick={() => openEditModal(r)} className="p-1.5 text-blue-600">
+              <button
+                onClick={() => openEditModal(r)}
+                disabled={loading || deletingId === r._id}
+                className="p-1.5 text-blue-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
+              >
                 <Edit className="w-4 h-4" />
               </button>
-              <button onClick={() => handleDelete(r._id)} className="p-1.5 text-red-600">
-                <Trash2 className="w-4 h-4" />
+              <button
+                onClick={() => handleDelete(r._id, r.name)}
+                disabled={loading || deletingId === r._id}
+                className="p-1.5 text-red-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
+              >
+                {deletingId === r._id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
               </button>
             </div>
           </div>
@@ -204,9 +224,10 @@ export default function TestimonialsCMSClient({ initialTestimonials }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md"
+                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
                 >
-                  {loading ? 'Saving...' : 'Save Review'}
+                  {loading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>{loading ? 'Saving...' : 'Save Review'}</span>
                 </button>
               </div>
             </form>

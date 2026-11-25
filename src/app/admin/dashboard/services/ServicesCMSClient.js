@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Edit, Trash2, CheckCircle2, X } from 'lucide-react';
+import { Plus, Edit, Trash2, CheckCircle2, X, Loader2 } from 'lucide-react';
 import CloudinaryUploader from '../../../../components/admin/CloudinaryUploader.js';
+import { showSuccessAlert, showErrorAlert, showConfirmAlert } from '../../../../lib/alerts.js';
 
 export default function ServicesCMSClient({ initialServices }) {
   const router = useRouter();
@@ -11,6 +12,7 @@ export default function ServicesCMSClient({ initialServices }) {
   const [editingItem, setEditingItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   const [form, setForm] = useState({
     title: '',
@@ -58,6 +60,7 @@ export default function ServicesCMSClient({ initialServices }) {
 
   const handleSave = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
 
     const deliverablesArr = form.deliverables
@@ -80,6 +83,7 @@ export default function ServicesCMSClient({ initialServices }) {
         });
         const updated = await res.json();
         setServices(services.map((item) => (item._id === editingItem._id ? updated : item)));
+        showSuccessAlert('Service Updated', `${form.title} has been saved.`);
       } else {
         const res = await fetch('/api/admin/services', {
           method: 'POST',
@@ -88,24 +92,32 @@ export default function ServicesCMSClient({ initialServices }) {
         });
         const created = await res.json();
         setServices([...services, created]);
+        showSuccessAlert('Service Created', `${form.title} added successfully.`);
       }
       setModalOpen(false);
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Save Failed', err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this service?')) return;
+  const handleDelete = async (id, title) => {
+    if (deletingId) return;
+    const confirmed = await showConfirmAlert(`Delete ${title || 'service'}?`, 'This service will be removed from your website.');
+    if (!confirmed) return;
+
+    setDeletingId(id);
     try {
       await fetch(`/api/admin/services/${id}`, { method: 'DELETE' });
       setServices(services.filter((s) => s._id !== id));
+      showSuccessAlert('Service Deleted');
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Delete Failed', err.message);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -151,15 +163,17 @@ export default function ServicesCMSClient({ initialServices }) {
                 <td className="p-4 text-right space-x-2">
                   <button
                     onClick={() => openEditModal(s)}
-                    className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg"
+                    disabled={loading || deletingId === s._id}
+                    className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg disabled:opacity-50"
                   >
                     <Edit className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => handleDelete(s._id)}
-                    className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg"
+                    onClick={() => handleDelete(s._id, s.title)}
+                    disabled={loading || deletingId === s._id}
+                    className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg disabled:opacity-50"
                   >
-                    <Trash2 className="w-4 h-4" />
+                    {deletingId === s._id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
                   </button>
                 </td>
               </tr>
@@ -255,9 +269,10 @@ export default function ServicesCMSClient({ initialServices }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md"
+                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
                 >
-                  {loading ? 'Saving...' : 'Save Service'}
+                  {loading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>{loading ? 'Saving...' : 'Save Service'}</span>
                 </button>
               </div>
             </form>

@@ -3,7 +3,7 @@
     "_id": "179481741974151d6z",
     "name": "COMPLETE BUSINESS SETUP",
     "type": "setup",
-    "price": "₹2,999",
+    "price": "₹4,999",
     "period": "one-time complete setup",
     "description": "Full done-for-you professional digital setup across all major platforms with optimized brand profiles.",
     "features": [
@@ -14,18 +14,18 @@
       "Custom avatar, cover banner, and 3 starter launch posts"
     ],
     "ctaText": "Get Complete Business Setup",
-    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20the%20Complete%20Business%20Setup%20package%20(%E2%82%B92,999)",
+    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20the%20Complete%20Business%20Setup%20package%20(%E2%82%B94,999)",
     "isFeatured": false,
     "order": 3,
     "isPublished": true,
     "createdAt": "2026-11-16T08:23:39.741Z",
-    "updatedAt": "2026-11-16T08:23:39.741Z"
+    "updatedAt": "2026-11-23T16:56:00.000Z"
   },
   {
     "_id": "17948174197379uc17",
     "name": "PRIVATE 1-to-1 SESSION",
     "type": "workshop",
-    "price": "₹399",
+    "price": "₹999",
     "period": "per business",
     "description": "Personalized private consultation and hands-on guidance customized directly to your business niche.",
     "features": [
@@ -36,18 +36,18 @@
       "Direct ongoing WhatsApp support for 7 days"
     ],
     "ctaText": "Book Private 1-to-1 Session",
-    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20book%20a%20Private%201-to-1%20Session%20(%E2%82%B9399)",
+    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20book%20a%20Private%201-to-1%20Session%20(%E2%82%B9999)",
     "isFeatured": true,
     "order": 2,
     "isPublished": true,
     "createdAt": "2026-11-16T08:23:39.737Z",
-    "updatedAt": "2026-11-16T08:23:39.737Z"
+    "updatedAt": "2026-11-23T16:56:00.000Z"
   },
   {
     "_id": "17948174197330ru99",
     "name": "GROUP LIVE WORKSHOP",
     "type": "workshop",
-    "price": "₹199",
+    "price": "₹499",
     "period": "per participant",
     "description": "Interactive beginner-friendly group session to master social media essentials for your business.",
     "features": [
@@ -58,11 +58,11 @@
       "Recording / summary cheat sheet access"
     ],
     "ctaText": "Register for Group Workshop",
-    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20to%20register%20for%20the%20Group%20Live%20Workshop%20(%E2%82%B9199)",
+    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20to%20register%20for%20the%20Group%20Live%20Workshop%20(%E2%82%B9499)",
     "isFeatured": false,
     "order": 1,
     "isPublished": true,
     "createdAt": "2026-11-16T08:23:39.733Z",
-    "updatedAt": "2026-11-16T08:23:39.733Z"
+    "updatedAt": "2026-11-23T16:56:00.000Z"
   }
 ]

@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Edit, Trash2, X } from 'lucide-react';
+import { Plus, Edit, Trash2, X, Loader2 } from 'lucide-react';
 import CloudinaryUploader from '../../../../components/admin/CloudinaryUploader.js';
 import { getClientLogo } from '../../../../lib/clientLogoHelper.js';
+import { showSuccessAlert, showErrorAlert, showConfirmAlert } from '../../../../lib/alerts.js';
 
 export default function ClientsCMSClient({ initialClients }) {
   const router = useRouter();
@@ -12,6 +13,8 @@ export default function ClientsCMSClient({ initialClients }) {
   const [editingItem, setEditingItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const [deletingId, setDeletingId] = useState(null);
 
   const [form, setForm] = useState({
     name: '',
@@ -53,6 +56,7 @@ export default function ClientsCMSClient({ initialClients }) {
 
   const handleSave = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
 
     try {
@@ -64,6 +68,7 @@ export default function ClientsCMSClient({ initialClients }) {
         });
         const updated = await res.json();
         setClients(clients.map((i) => (i._id === editingItem._id ? updated : i)));
+        showSuccessAlert('Client Updated', `${form.name} details have been saved.`);
       } else {
         const res = await fetch('/api/admin/clients', {
           method: 'POST',
@@ -72,24 +77,32 @@ export default function ClientsCMSClient({ initialClients }) {
         });
         const created = await res.json();
         setClients([...clients, created]);
+        showSuccessAlert('Client Added', `${form.name} has been added successfully.`);
       }
       setModalOpen(false);
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Operation Failed', err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this client?')) return;
+  const handleDelete = async (id, name) => {
+    if (deletingId) return;
+    const confirmed = await showConfirmAlert(`Delete ${name || 'Client'}?`, 'This client will be removed from your showcase.');
+    if (!confirmed) return;
+
+    setDeletingId(id);
     try {
       await fetch(`/api/admin/clients/${id}`, { method: 'DELETE' });
       setClients(clients.filter((c) => c._id !== id));
+      showSuccessAlert('Client Deleted');
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Delete Failed', err.message);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -140,15 +153,17 @@ export default function ClientsCMSClient({ initialClients }) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => openEditModal(c)}
-                  className="p-1.5 text-blue-600 hover:bg-slate-50 rounded-lg"
+                  disabled={loading || deletingId === c._id}
+                  className="p-1.5 text-blue-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
                 >
                   <Edit className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => handleDelete(c._id)}
-                  className="p-1.5 text-red-600 hover:bg-slate-50 rounded-lg"
+                  onClick={() => handleDelete(c._id, c.name)}
+                  disabled={loading || deletingId === c._id}
+                  className="p-1.5 text-red-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  {deletingId === c._id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
                 </button>
               </div>
             </div>
@@ -216,9 +231,10 @@ export default function ClientsCMSClient({ initialClients }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md"
+                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
                 >
-                  {loading ? 'Saving...' : 'Save Client'}
+                  {loading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>{loading ? 'Saving...' : 'Save Client'}</span>
                 </button>
               </div>
             </form>

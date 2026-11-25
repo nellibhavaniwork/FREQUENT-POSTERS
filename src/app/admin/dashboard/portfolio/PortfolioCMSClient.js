@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Edit, Trash2, X, ExternalLink } from 'lucide-react';
+import { Plus, Edit, Trash2, X, ExternalLink, Loader2 } from 'lucide-react';
 import CloudinaryUploader from '../../../../components/admin/CloudinaryUploader.js';
+import { showSuccessAlert, showErrorAlert, showConfirmAlert } from '../../../../lib/alerts.js';
 
 export default function PortfolioCMSClient({ initialPortfolio }) {
   const router = useRouter();
@@ -11,6 +12,7 @@ export default function PortfolioCMSClient({ initialPortfolio }) {
   const [editingItem, setEditingItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   const [form, setForm] = useState({
     title: '',
@@ -64,9 +66,10 @@ export default function PortfolioCMSClient({ initialPortfolio }) {
   const handleSave = async (e) => {
     e.preventDefault();
     if (!form.thumbnailUrl) {
-      alert('Please upload or provide an image URL for the project thumbnail.');
+      showErrorAlert('Missing Image', 'Please upload or provide an image for the project thumbnail.');
       return;
     }
+    if (loading) return;
     setLoading(true);
 
     const payload = {
@@ -83,6 +86,7 @@ export default function PortfolioCMSClient({ initialPortfolio }) {
         });
         const updated = await res.json();
         setItems(items.map((i) => (i._id === editingItem._id ? updated : i)));
+        showSuccessAlert('Project Updated', `${form.title} has been saved.`);
       } else {
         const res = await fetch('/api/admin/portfolio', {
           method: 'POST',
@@ -91,24 +95,32 @@ export default function PortfolioCMSClient({ initialPortfolio }) {
         });
         const created = await res.json();
         setItems([...items, created]);
+        showSuccessAlert('Project Created', `${form.title} added to portfolio.`);
       }
       setModalOpen(false);
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Save Failed', err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this portfolio project?')) return;
+  const handleDelete = async (id, title) => {
+    if (deletingId) return;
+    const confirmed = await showConfirmAlert(`Delete ${title || 'project'}?`, 'This portfolio work will be permanently removed.');
+    if (!confirmed) return;
+
+    setDeletingId(id);
     try {
       await fetch(`/api/admin/portfolio/${id}`, { method: 'DELETE' });
       setItems(items.filter((i) => i._id !== id));
+      showSuccessAlert('Project Deleted');
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Delete Failed', err.message);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -154,15 +166,17 @@ export default function PortfolioCMSClient({ initialPortfolio }) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => openEditModal(p)}
-                  className="p-1.5 text-blue-600 hover:bg-white rounded-lg border border-slate-200"
+                  disabled={loading || deletingId === p._id}
+                  className="p-1.5 text-blue-600 hover:bg-white rounded-lg border border-slate-200 disabled:opacity-50"
                 >
                   <Edit className="w-3.5 h-3.5" />
                 </button>
                 <button
-                  onClick={() => handleDelete(p._id)}
-                  className="p-1.5 text-red-600 hover:bg-white rounded-lg border border-slate-200"
+                  onClick={() => handleDelete(p._id, p.title)}
+                  disabled={loading || deletingId === p._id}
+                  className="p-1.5 text-red-600 hover:bg-white rounded-lg border border-slate-200 disabled:opacity-50"
                 >
-                  <Trash2 className="w-3.5 h-3.5" />
+                  {deletingId === p._id ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
                 </button>
               </div>
             </div>
@@ -258,9 +272,10 @@ export default function PortfolioCMSClient({ initialPortfolio }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md"
+                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
                 >
-                  {loading ? 'Saving...' : 'Save Portfolio Item'}
+                  {loading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>{loading ? 'Saving...' : 'Save Portfolio Item'}</span>
                 </button>
               </div>
             </form>

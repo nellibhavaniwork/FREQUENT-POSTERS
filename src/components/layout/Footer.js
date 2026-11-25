@@ -58,6 +58,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/founder" className="hover:text-white transition-colors text-teal-300 font-bold">
+                  Meet the Founder
+                </Link>
+              </li>
+              <li>
                 <Link href="/services" className="hover:text-white transition-colors">
                   Our Services
                 </Link>
@@ -68,13 +73,23 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="hover:text-white transition-colors">
-                  Packages &amp; Pricing
+                <Link href="/workshops" className="hover:text-white transition-colors">
+                  Workshops &amp; Pricing
                 </Link>
               </li>
               <li>
                 <Link href="/learn-with-us" className="hover:text-white transition-colors">
                   Learn With Us (Academy)
+                </Link>
+              </li>
+              <li>
+                <Link href="/faqs" className="hover:text-white transition-colors">
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers" className="hover:text-white transition-colors">
+                  Careers &amp; Internships
                 </Link>
               </li>
               <li>

@@ -37,73 +37,97 @@ export default async function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Details */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#F5F8FF] border border-blue-100 rounded-3xl p-8 space-y-6 card-shadow">
-              <h3 className="text-xl font-black text-[#071957]">
-                Studio Direct Contact
-              </h3>
+            <div className="bg-[#F5F8FF] border border-slate-200/90 rounded-3xl p-8 space-y-6 card-shadow">
+              <div>
+                <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#2855CE] block mb-1">
+                  DIRECT CONTACT
+                </span>
+                <h3 className="text-2xl font-black text-[#071957]">
+                  Studio Direct Contact
+                </h3>
+              </div>
 
-              <div className="space-y-4 text-sm">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
-                    <HiOutlineMapPin className="w-5 h-5 text-[#2855CE]" />
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-3.5 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
+                  <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#2855CE] flex items-center justify-center shrink-0">
+                    <HiOutlineMapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-400 block uppercase">
+                    <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">
                       Location
                     </span>
-                    <span className="font-extrabold text-[#071957]">
+                    <span className="font-extrabold text-[#071957] text-sm">
                       {settings?.location || 'Hyderabad, Telangana, India'}
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
-                    <HiOutlinePhone className="w-5 h-5 text-[#2855CE]" />
+                <div className="flex items-center gap-4 p-3.5 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
+                  <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#2855CE] flex items-center justify-center shrink-0">
+                    <HiOutlinePhone className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-400 block uppercase">
-                      Phone &amp; WhatsApp
+                    <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">
+                      Direct Calling Phone
                     </span>
                     <a
-                      href="tel:+917780271948"
-                      className="font-extrabold text-[#071957] hover:text-[#2855CE] transition-colors"
+                      href={`tel:${(settings?.phone || '+91 7780271948').replace(/\s+/g, '')}`}
+                      className="font-extrabold text-[#071957] text-sm hover:text-[#2855CE] transition-colors"
                     >
                       {settings?.phone || '+91 7780271948'}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
-                    <HiOutlineEnvelope className="w-5 h-5 text-[#2855CE]" />
+                <div className="flex items-center gap-4 p-3.5 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-50 text-[#25D366] flex items-center justify-center shrink-0">
+                    <FaWhatsapp className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-400 block uppercase">
-                      Email
+                    <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">
+                      WhatsApp Messaging
                     </span>
                     <a
-                      href="mailto:frequentposters@gmail.com"
-                      className="font-extrabold text-[#071957] hover:text-[#2855CE] transition-colors"
+                      href={`https://wa.me/${(settings?.whatsapp || '917780271948').replace(/\D/g, '')}?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20enquire%20about%20your%20services.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-extrabold text-[#071957] text-sm hover:text-[#25D366] transition-colors"
+                    >
+                      {settings?.whatsapp || settings?.phone || '+91 7780271948'}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 p-3.5 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
+                  <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#2855CE] flex items-center justify-center shrink-0">
+                    <HiOutlineEnvelope className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">
+                      Email Address
+                    </span>
+                    <a
+                      href={`mailto:${settings?.email || 'frequentposters@gmail.com'}`}
+                      className="font-extrabold text-[#071957] text-sm hover:text-[#2855CE] transition-colors"
                     >
                       {settings?.email || 'frequentposters@gmail.com'}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
-                    <FaInstagram className="w-5 h-5 text-[#2855CE]" />
+                <div className="flex items-center gap-4 p-3.5 bg-white rounded-2xl border border-slate-200/80 shadow-xs">
+                  <div className="w-11 h-11 rounded-xl bg-pink-50 text-[#E1306C] flex items-center justify-center shrink-0">
+                    <FaInstagram className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-400 block uppercase">
-                      Instagram
+                    <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">
+                      Instagram Studio
                     </span>
                     <a
                       href="https://instagram.com/frequentposters"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-extrabold text-[#071957] hover:text-[#2855CE] transition-colors"
+                      className="font-extrabold text-[#071957] text-sm hover:text-[#2855CE] transition-colors"
                     >
                       {settings?.instagram || '@frequentposters'}
                     </a>
@@ -112,15 +136,15 @@ export default async function ContactPage() {
               </div>
 
               {/* Direct WhatsApp Action Box */}
-              <div className="pt-4 border-t border-slate-200">
+              <div className="pt-2">
                 <a
-                  href="https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20discuss%20my%20branding%20project."
+                  href={`https://wa.me/${(settings?.whatsapp || '917780271948').replace(/\D/g, '')}?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20discuss%20my%20branding%20project.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white font-extrabold text-xs py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"
+                  className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white font-extrabold text-xs py-4 px-4 rounded-2xl flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all"
                 >
                   <FaWhatsapp className="w-5 h-5 text-white" />
-                  <span>Instant WhatsApp Chat (+91 7780271948)</span>
+                  <span>Instant WhatsApp Chat ({settings?.whatsapp || settings?.phone || '+91 7780271948'})</span>
                 </a>
               </div>
             </div>

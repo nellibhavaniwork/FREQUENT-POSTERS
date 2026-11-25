@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Edit, Trash2, X } from 'lucide-react';
+import { Plus, Edit, Trash2, X, Loader2 } from 'lucide-react';
+import { showSuccessAlert, showErrorAlert, showConfirmAlert } from '../../../../lib/alerts.js';
 
 export default function PricingCMSClient({ initialPricing }) {
   const router = useRouter();
@@ -10,6 +11,7 @@ export default function PricingCMSClient({ initialPricing }) {
   const [editingItem, setEditingItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   const [form, setForm] = useState({
     name: '',
@@ -57,6 +59,7 @@ export default function PricingCMSClient({ initialPricing }) {
 
   const handleSave = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
 
     const featuresArr = form.features
@@ -78,6 +81,7 @@ export default function PricingCMSClient({ initialPricing }) {
         });
         const updated = await res.json();
         setPricing(pricing.map((i) => (i._id === editingItem._id ? updated : i)));
+        showSuccessAlert('Workshop Updated', `${form.name} package saved.`);
       } else {
         const res = await fetch('/api/admin/pricing', {
           method: 'POST',
@@ -86,24 +90,32 @@ export default function PricingCMSClient({ initialPricing }) {
         });
         const created = await res.json();
         setPricing([...pricing, created]);
+        showSuccessAlert('Workshop Added', `${form.name} package created.`);
       }
       setModalOpen(false);
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Save Failed', err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this pricing package?')) return;
+  const handleDelete = async (id, name) => {
+    if (deletingId) return;
+    const confirmed = await showConfirmAlert(`Delete ${name || 'package'}?`, 'This workshop tier will be removed from your public website.');
+    if (!confirmed) return;
+
+    setDeletingId(id);
     try {
       await fetch(`/api/admin/pricing/${id}`, { method: 'DELETE' });
       setPricing(pricing.filter((p) => p._id !== id));
+      showSuccessAlert('Package Deleted');
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Delete Failed', err.message);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -149,11 +161,19 @@ export default function PricingCMSClient({ initialPricing }) {
             <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
               <span className="text-[10px] text-slate-400 font-bold">{p.period}</span>
               <div className="flex items-center gap-2">
-                <button onClick={() => openEditModal(p)} className="p-1.5 text-blue-600">
+                <button
+                  onClick={() => openEditModal(p)}
+                  disabled={loading || deletingId === p._id}
+                  className="p-1.5 text-blue-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
+                >
                   <Edit className="w-4 h-4" />
                 </button>
-                <button onClick={() => handleDelete(p._id)} className="p-1.5 text-red-600">
-                  <Trash2 className="w-4 h-4" />
+                <button
+                  onClick={() => handleDelete(p._id, p.name)}
+                  disabled={loading || deletingId === p._id}
+                  className="p-1.5 text-red-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
+                >
+                  {deletingId === p._id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
                 </button>
               </div>
             </div>
@@ -257,9 +277,10 @@ export default function PricingCMSClient({ initialPricing }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md"
+                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
                 >
-                  {loading ? 'Saving...' : 'Save Package'}
+                  {loading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>{loading ? 'Saving...' : 'Save Package'}</span>
                 </button>
               </div>
             </form>

@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Save, Lock, User, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Save, Lock, User, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import CloudinaryUploader from '../../../../components/admin/CloudinaryUploader.js';
+import { showSuccessAlert, showErrorAlert } from '../../../../lib/alerts.js';
 
 export default function SettingsCMSClient({ initialSettings, adminEmail }) {
   const router = useRouter();
@@ -24,6 +25,7 @@ export default function SettingsCMSClient({ initialSettings, adminEmail }) {
 
   const handleSettingsSave = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
     setSuccess('');
     setError('');
@@ -36,9 +38,11 @@ export default function SettingsCMSClient({ initialSettings, adminEmail }) {
       });
 
       if (!res.ok) throw new Error('Failed to update website settings');
+      showSuccessAlert('Settings Saved', 'Website configuration updated across public pages.');
       setSuccess('Website settings updated successfully! Public pages updated.');
       router.refresh();
     } catch (err) {
+      showErrorAlert('Update Failed', err.message);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -121,14 +125,26 @@ export default function SettingsCMSClient({ initialSettings, adminEmail }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label className="text-xs font-extrabold text-[#071957] block mb-1">Phone / WhatsApp</label>
+            <label className="text-xs font-extrabold text-[#071957] block mb-1">Direct Phone Number</label>
             <input
               type="text"
               value={settings.phone || ''}
-              onChange={(e) => setSettings({ ...settings, phone: e.target.value, whatsapp: e.target.value })}
+              onChange={(e) => setSettings({ ...settings, phone: e.target.value })}
               className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-[#071957]"
+              placeholder="+91 7780271948"
+            />
+          </div>
+
+          <div>
+            <label className="text-xs font-extrabold text-[#071957] block mb-1">WhatsApp Number</label>
+            <input
+              type="text"
+              value={settings.whatsapp || ''}
+              onChange={(e) => setSettings({ ...settings, whatsapp: e.target.value })}
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-[#071957]"
+              placeholder="+91 7780271948"
             />
           </div>
 
@@ -248,9 +264,9 @@ export default function SettingsCMSClient({ initialSettings, adminEmail }) {
         <button
           type="submit"
           disabled={loading}
-          className="brand-gradient text-white text-xs font-extrabold px-8 py-3.5 rounded-xl shadow-md flex items-center gap-2"
+          className="brand-gradient text-white text-xs font-extrabold px-8 py-3.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
         >
-          <Save className="w-4 h-4" />
+          {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
           <span>{loading ? 'Saving Settings...' : 'Save Website Settings'}</span>
         </button>
       </form>

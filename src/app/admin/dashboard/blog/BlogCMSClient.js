@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Edit, Trash2, X } from 'lucide-react';
+import { Plus, Edit, Trash2, X, Loader2 } from 'lucide-react';
 import CloudinaryUploader from '../../../../components/admin/CloudinaryUploader.js';
+import { showSuccessAlert, showErrorAlert, showConfirmAlert } from '../../../../lib/alerts.js';
 
 export default function BlogCMSClient({ initialBlogs }) {
   const router = useRouter();
@@ -11,6 +12,7 @@ export default function BlogCMSClient({ initialBlogs }) {
   const [editingItem, setEditingItem] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
 
   const [form, setForm] = useState({
     title: '',
@@ -55,6 +57,7 @@ export default function BlogCMSClient({ initialBlogs }) {
 
   const handleSave = async (e) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
 
     const payload = {
@@ -71,6 +74,7 @@ export default function BlogCMSClient({ initialBlogs }) {
         });
         const updated = await res.json();
         setBlogs(blogs.map((i) => (i._id === editingItem._id ? updated : i)));
+        showSuccessAlert('Post Updated', `${form.title} has been saved.`);
       } else {
         const res = await fetch('/api/admin/blog', {
           method: 'POST',
@@ -79,24 +83,32 @@ export default function BlogCMSClient({ initialBlogs }) {
         });
         const created = await res.json();
         setBlogs([...blogs, created]);
+        showSuccessAlert('Post Created', `${form.title} has been added.`);
       }
       setModalOpen(false);
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Save Failed', err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this article?')) return;
+  const handleDelete = async (id, title) => {
+    if (deletingId) return;
+    const confirmed = await showConfirmAlert(`Delete ${title || 'article'}?`, 'This post will be deleted permanently.');
+    if (!confirmed) return;
+
+    setDeletingId(id);
     try {
       await fetch(`/api/admin/blog/${id}`, { method: 'DELETE' });
       setBlogs(blogs.filter((b) => b._id !== id));
+      showSuccessAlert('Article Deleted');
       router.refresh();
     } catch (err) {
-      alert(err.message);
+      showErrorAlert('Delete Failed', err.message);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -147,11 +159,19 @@ export default function BlogCMSClient({ initialBlogs }) {
                   </span>
                 </td>
                 <td className="p-4 text-right space-x-2">
-                  <button onClick={() => openEditModal(b)} className="p-1.5 text-blue-600">
+                  <button
+                    onClick={() => openEditModal(b)}
+                    disabled={loading || deletingId === b._id}
+                    className="p-1.5 text-blue-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
+                  >
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button onClick={() => handleDelete(b._id)} className="p-1.5 text-red-600">
-                    <Trash2 className="w-4 h-4" />
+                  <button
+                    onClick={() => handleDelete(b._id, b.title)}
+                    disabled={loading || deletingId === b._id}
+                    className="p-1.5 text-red-600 hover:bg-slate-50 rounded-lg disabled:opacity-50"
+                  >
+                    {deletingId === b._id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
                   </button>
                 </td>
               </tr>
@@ -249,9 +269,10 @@ export default function BlogCMSClient({ initialBlogs }) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md"
+                  className="brand-gradient text-white text-xs font-extrabold px-6 py-2.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
                 >
-                  {loading ? 'Saving...' : 'Save Article'}
+                  {loading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>{loading ? 'Saving...' : 'Save Article'}</span>
                 </button>
               </div>
             </form>
