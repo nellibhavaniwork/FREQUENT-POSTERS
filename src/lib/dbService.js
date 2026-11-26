@@ -58,8 +58,15 @@ function getWritableDataDir() {
   return BUNDLED_DATA_DIR;
 }
 
-// Read data from disk fallback
+// In-memory cache for instant zero-latency reads
+const localMemoryCache = new Map();
+
+// Read data from disk fallback (with in-memory cache)
 export function getLocalData(collectionName) {
+  if (localMemoryCache.has(collectionName)) {
+    return localMemoryCache.get(collectionName);
+  }
+
   try {
     const writableDir = getWritableDataDir();
     const writableFile = path.join(writableDir, `${collectionName}.json`);
@@ -67,7 +74,9 @@ export function getLocalData(collectionName) {
     // First check if an updated file exists in writable dir
     if (fs.existsSync(writableFile)) {
       try {
-        return JSON.parse(fs.readFileSync(writableFile, 'utf-8'));
+        const parsed = JSON.parse(fs.readFileSync(writableFile, 'utf-8'));
+        localMemoryCache.set(collectionName, parsed);
+        return parsed;
       } catch {
         // Fall through to bundled
       }
@@ -76,7 +85,9 @@ export function getLocalData(collectionName) {
     // Fallback to read-only bundled file
     const bundledFile = path.join(BUNDLED_DATA_DIR, `${collectionName}.json`);
     if (fs.existsSync(bundledFile)) {
-      return JSON.parse(fs.readFileSync(bundledFile, 'utf-8'));
+      const parsed = JSON.parse(fs.readFileSync(bundledFile, 'utf-8'));
+      localMemoryCache.set(collectionName, parsed);
+      return parsed;
     }
   } catch (err) {
     console.warn(`[dbService] getLocalData(${collectionName}) read error:`, err.message);
@@ -85,8 +96,9 @@ export function getLocalData(collectionName) {
   return null;
 }
 
-// Write data to disk fallback (safe against EROFS)
+// Write data to disk fallback (safe against EROFS) and invalidate memory cache
 export function setLocalData(collectionName, data) {
+  localMemoryCache.set(collectionName, data);
   try {
     const writableDir = getWritableDataDir();
     const file = path.join(writableDir, `${collectionName}.json`);
@@ -262,9 +274,13 @@ export async function dbUpdate(collectionName, query, updateData) {
 
   // Local JSON fallback
   const data = getLocalData(collectionName) || [];
-  const index = data.findIndex((item) =>
+  let index = data.findIndex((item) =>
     Object.entries(query).every(([k, v]) => String(item[k]) === String(v))
   );
+
+  if (index === -1 && collectionName === 'settings' && data.length > 0) {
+    index = 0;
+  }
 
   if (index !== -1) {
     data[index] = { ...data[index], ...updateData, updatedAt: new Date().toISOString() };

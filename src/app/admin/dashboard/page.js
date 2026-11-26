@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { dbFind } from '../../../lib/dbService.js';
+import { dbFind, dbFindOne } from '../../../lib/dbService.js';
 import {
   Palette,
   Briefcase,
@@ -11,12 +11,13 @@ import {
   ArrowRight,
   Clock,
   Sparkles,
+  Layers,
 } from 'lucide-react';
 
 export const revalidate = 0;
 
 export default async function AdminDashboardOverview() {
-  const [services, portfolio, clients, pricing, testimonials, blogs, enquiries] =
+  const [services, portfolio, clients, pricing, testimonials, blogs, enquiries, settings] =
     await Promise.all([
       dbFind('services', {}),
       dbFind('portfolio', {}),
@@ -25,6 +26,7 @@ export default async function AdminDashboardOverview() {
       dbFind('testimonials', {}),
       dbFind('blog', {}),
       dbFind('enquiries', {}),
+      dbFindOne('settings'),
     ]);
 
   const stats = [
@@ -34,6 +36,7 @@ export default async function AdminDashboardOverview() {
     { name: 'Pricing Packages', count: pricing.length, href: '/admin/dashboard/pricing', icon: CreditCard, color: 'text-amber-600 bg-amber-50' },
     { name: 'Testimonials', count: testimonials.length, href: '/admin/dashboard/testimonials', icon: Star, color: 'text-rose-600 bg-rose-50' },
     { name: 'Blog Articles', count: blogs.length, href: '/admin/dashboard/blog', icon: FileText, color: 'text-indigo-600 bg-indigo-50' },
+    { name: 'Hero Stack Cards', count: settings?.heroStackCards?.length || 5, href: '/admin/dashboard/settings#hero-stack', icon: Layers, color: 'text-cyan-600 bg-cyan-50' },
     { name: 'Client Enquiries', count: enquiries.length, href: '/admin/dashboard/enquiries', icon: Mail, color: 'text-teal-600 bg-teal-50' },
   ];
 

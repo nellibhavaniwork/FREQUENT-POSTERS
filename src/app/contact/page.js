@@ -16,28 +16,40 @@ export default async function ContactPage() {
   const settings = await dbFindOne('settings');
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="max-w-3xl">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
+          <span
+            className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2 animate-mask-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             START YOUR CONVERSATION
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight">
+          <h1
+            className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+            style={{ animationDelay: '180ms' }}
+          >
             Have an Idea? <br />
             <span className="brand-gradient-text">Let&apos;s Make It Happen.</span>
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed">
+          <p
+            className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed animate-mask-rise"
+            style={{ animationDelay: '280ms' }}
+          >
             Whether you need a fresh brand identity, monthly social media creatives, a done-for-you business online setup, or practical training, we are here to help your business stand out.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Details */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#F5F8FF] border border-slate-200/90 rounded-3xl p-8 space-y-6 card-shadow">
+            <div className="bg-white/80 backdrop-blur-md border border-slate-200/90 rounded-3xl p-8 space-y-6 card-shadow">
               <div>
                 <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#2855CE] block mb-1">
                   DIRECT CONTACT

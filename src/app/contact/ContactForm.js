@@ -75,7 +75,7 @@ export default function ContactForm() {
         <div className="pt-2">
           <button
             onClick={() => setSuccess(false)}
-            className="brand-gradient text-white text-xs font-bold px-6 py-3 rounded-xl shadow-md"
+            className="bg-[#071957] hover:bg-[#0f2878] text-white text-sm font-bold px-7 py-3 rounded-xl shadow-md transition-all"
           >
             Send Another Message
           </button>
@@ -197,7 +197,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full brand-gradient text-white font-extrabold text-sm py-4 rounded-xl shadow-lg hover:shadow-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+        className="w-full bg-[#071957] hover:bg-[#0f2878] text-white font-bold text-base py-4 rounded-xl shadow-[0_4px_16px_rgba(7,25,87,0.18)] hover:shadow-[0_8px_24px_rgba(7,25,87,0.26)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
       >
         {loading ? (
           <span>Sending Enquiry...</span>

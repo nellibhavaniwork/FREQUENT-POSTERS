@@ -16,10 +16,10 @@
     "ctaText": "Get Complete Business Setup",
     "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20the%20Complete%20Business%20Setup%20package%20(%E2%82%B94,999)",
     "isFeatured": false,
-    "order": 3,
+    "order": 1,
     "isPublished": true,
     "createdAt": "2026-11-16T08:23:39.741Z",
-    "updatedAt": "2026-11-23T16:56:00.000Z"
+    "updatedAt": "2026-11-26T11:00:00.000Z"
   },
   {
     "_id": "17948174197379uc17",
@@ -41,7 +41,7 @@
     "order": 2,
     "isPublished": true,
     "createdAt": "2026-11-16T08:23:39.737Z",
-    "updatedAt": "2026-11-23T16:56:00.000Z"
+    "updatedAt": "2026-11-26T11:00:00.000Z"
   },
   {
     "_id": "17948174197330ru99",
@@ -60,9 +60,97 @@
     "ctaText": "Register for Group Workshop",
     "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20to%20register%20for%20the%20Group%20Live%20Workshop%20(%E2%82%B9499)",
     "isFeatured": false,
-    "order": 1,
+    "order": 3,
     "isPublished": true,
     "createdAt": "2026-11-16T08:23:39.733Z",
-    "updatedAt": "2026-11-23T16:56:00.000Z"
+    "updatedAt": "2026-11-26T11:00:00.000Z"
+  },
+  {
+    "_id": "pkg_social_growth_01",
+    "name": "MONTHLY SOCIAL GROWTH",
+    "type": "custom",
+    "price": "₹9,999",
+    "period": "per month (cancel anytime)",
+    "description": "Consistent, high-converting social media creative design & strategic posting for growing businesses.",
+    "features": [
+      "12 Custom designed carousel & static posts",
+      "High-engagement captions & targeted hashtag sets",
+      "Monthly content plan & visual grid scheduling",
+      "Custom story templates & highlight covers",
+      "Dedicated creative manager & monthly growth report"
+    ],
+    "ctaText": "Start Monthly Growth",
+    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20am%20interested%20in%20the%20Monthly%20Social%20Growth%20package",
+    "isFeatured": false,
+    "order": 4,
+    "isPublished": true,
+    "createdAt": "2026-11-26T11:00:00.000Z",
+    "updatedAt": "2026-11-26T11:00:00.000Z"
+  },
+  {
+    "_id": "pkg_brand_identity_02",
+    "name": "BRAND IDENTITY SUITE",
+    "type": "setup",
+    "price": "₹6,999",
+    "period": "one-time complete kit",
+    "description": "Transform your business into an unforgettable brand with an executive visual identity system.",
+    "features": [
+      "3 Distinct custom logo concepts with unlimited tweaks",
+      "Official typography guidelines & brand color palette",
+      "Premium business cards & stationery collateral",
+      "Social media kit: DP, banner, and launch templates",
+      "Full high-res vector files (AI, EPS, SVG, PNG)"
+    ],
+    "ctaText": "Claim Brand Identity",
+    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20the%20Brand%20Identity%20Suite%20package",
+    "isFeatured": false,
+    "order": 5,
+    "isPublished": true,
+    "createdAt": "2026-11-26T11:00:00.000Z",
+    "updatedAt": "2026-11-26T11:00:00.000Z"
+  },
+  {
+    "_id": "pkg_reels_video_03",
+    "name": "REELS & VIDEO MASTERCLASS",
+    "type": "workshop",
+    "price": "₹799",
+    "period": "per participant (live Zoom)",
+    "description": "Master shooting, scripting, and editing viral Instagram Reels & Shorts using only your smartphone.",
+    "features": [
+      "Live 2-hour hands-on CapCut & Canva video masterclass",
+      "Hook writing formula to stop user scrolling",
+      "Trending audio curation & copyright-safe workflows",
+      "High-CTR cover design & thumbnail strategies",
+      "Lifetime recording + 25 Viral Hook templates PDF"
+    ],
+    "ctaText": "Join Reels Masterclass",
+    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20want%20to%20join%20the%20Reels%20and%20Video%20Masterclass",
+    "isFeatured": false,
+    "order": 6,
+    "isPublished": true,
+    "createdAt": "2026-11-26T11:00:00.000Z",
+    "updatedAt": "2026-11-26T11:00:00.000Z"
+  },
+  {
+    "_id": "pkg_corporate_training_04",
+    "name": "CORPORATE TEAM TRAINING",
+    "type": "workshop",
+    "price": "₹14,999",
+    "period": "custom team cohort (up to 10)",
+    "description": "Upskill your internal marketing or sales team with custom agency-level design and digital workflows.",
+    "features": [
+      "Custom 3-day curriculum tailored to your industry",
+      "Hands-on brand consistency & Canva speed training",
+      "Review & revamp of current company pitch decks & collateral",
+      "Live Q&A, practical assignments & direct instructor critique",
+      "Certificate of Completion for every team member"
+    ],
+    "ctaText": "Book Corporate Cohort",
+    "ctaLink": "https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20would%20like%20to%20book%20Corporate%20Team%20Training",
+    "isFeatured": false,
+    "order": 7,
+    "isPublished": true,
+    "createdAt": "2026-11-26T11:00:00.000Z",
+    "updatedAt": "2026-11-26T11:00:00.000Z"
   }
 ]

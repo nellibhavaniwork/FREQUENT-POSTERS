@@ -2,6 +2,8 @@ import './globals.css';
 import Navbar from '../components/layout/Navbar.js';
 import Footer from '../components/layout/Footer.js';
 import WhatsAppButton from '../components/common/WhatsAppButton.js';
+import ScrollProgressBar from '../components/common/ScrollProgressBar';
+import GlobalBackground from '../components/common/GlobalBackground';
 
 export const metadata = {
   title: 'Frequent Posters | Premium Creative Agency & Digital Branding Studio',
@@ -35,11 +37,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@900,800,700,600,500,400,300&display=swap"
+          rel="stylesheet"
+        />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body className="antialiased min-h-screen flex flex-col bg-white">
+      <body className="antialiased min-h-screen flex flex-col font-sans text-slate-900 selection:bg-blue-100 selection:text-[#071957] relative">
+        <GlobalBackground />
+        <ScrollProgressBar />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>

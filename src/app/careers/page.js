@@ -29,7 +29,7 @@ export default function CareersPage() {
   ];
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
@@ -47,7 +47,7 @@ export default function CareersPage() {
           {openings.map((job, idx) => (
             <div
               key={idx}
-              className="bg-[#F5F8FF] border border-slate-200/90 rounded-3xl p-7 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 card-shadow hover:border-blue-300 transition-all"
+              className="bg-white/80 backdrop-blur-md border border-slate-200/90 rounded-3xl p-7 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 card-shadow hover:border-blue-300 transition-all"
             >
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -64,7 +64,7 @@ export default function CareersPage() {
 
               <a
                 href={`mailto:frequentposters@gmail.com?subject=Job%20Application:%20${encodeURIComponent(job.role)}`}
-                className="brand-gradient text-white font-extrabold text-xs px-6 py-3.5 rounded-xl shadow-md shrink-0 flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all text-center"
+                className="bg-[#071957] hover:bg-[#0f2878] text-white font-bold text-sm px-7 py-3.5 rounded-xl shadow-md shrink-0 flex items-center justify-center gap-2 active:scale-95 transition-all text-center"
               >
                 <span>Apply via Email</span>
                 <HiArrowRight className="w-4 h-4" />

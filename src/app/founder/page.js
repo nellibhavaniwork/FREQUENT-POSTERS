@@ -20,10 +20,13 @@ export default async function FounderPage() {
     'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop';
 
   return (
-    <div className="py-16 sm:py-24 bg-white overflow-hidden">
+    <div className="py-16 sm:py-24 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Hero Card */}
-        <div className="bg-gradient-to-tr from-[#071957] via-[#0d2a7a] to-[#0759d0] rounded-3xl p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden mb-16">
+        <div
+          className="bg-gradient-to-tr from-[#071957] via-[#0d2a7a] to-[#0759d0] rounded-3xl p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden mb-16 animate-mask-rise"
+          style={{ animationDelay: '100ms' }}
+        >
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-cyan-400/15 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-teal-400/15 blur-3xl pointer-events-none" />
 
@@ -92,14 +95,14 @@ export default async function FounderPage() {
                 href="https://wa.me/917780271948?text=Hi%20Bhavani,%20I%20would%20like%20to%20connect%20regarding%20my%20brand."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="brand-gradient text-white text-xs font-black px-6 py-3.5 rounded-xl shadow-md inline-flex items-center gap-2 hover:scale-105 transition-all"
+                className="bg-[#071957] hover:bg-[#0f2878] text-white text-sm font-bold px-7 py-3.5 rounded-xl shadow-md inline-flex items-center gap-2 transition-all"
               >
                 <FaWhatsapp className="w-4 h-4 text-white" />
                 <span>Connect with Bhavani</span>
               </a>
               <Link
                 href="/workshops"
-                className="bg-[#F5F8FF] border border-blue-200 text-[#071957] text-xs font-black px-6 py-3.5 rounded-xl hover:bg-blue-100 transition-all inline-flex items-center gap-2"
+                className="bg-white border border-slate-200 text-[#071957] text-sm font-bold px-7 py-3.5 rounded-xl hover:bg-slate-50 transition-all inline-flex items-center gap-2"
               >
                 <span>Explore Live Workshops</span>
                 <HiArrowRight className="w-4 h-4 text-[#2855CE]" />

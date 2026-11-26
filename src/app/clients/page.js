@@ -15,24 +15,36 @@ export default async function ClientsPage() {
   const clients = await dbFind('clients', { isPublished: true });
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="max-w-3xl">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
+          <span
+            className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2 animate-mask-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             PROUD PARTNERSHIPS
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight">
+          <h1
+            className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+            style={{ animationDelay: '180ms' }}
+          >
             Brands We&apos;ve Had the Pleasure of Working With.
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed">
+          <p
+            className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed animate-mask-rise"
+            style={{ animationDelay: '280ms' }}
+          >
             We value genuine relationships and tangible creative outcomes. Below are real businesses and entrepreneurs who trust Frequent Posters for their visual branding and social media execution.
           </p>
         </div>
       </div>
 
       {/* Clients Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {clients && clients.length > 0 ? (
             clients.map((client, idx) => (
@@ -83,7 +95,7 @@ export default async function ClientsPage() {
           </p>
           <Link
             href="/contact"
-            className="brand-gradient text-white font-extrabold text-xs px-8 py-3.5 rounded-xl shadow-lg inline-flex items-center gap-2"
+            className="bg-white text-[#071957] hover:bg-slate-100 font-bold text-base px-8 py-4 rounded-xl shadow-lg inline-flex items-center gap-2 transition-all"
           >
             <span>Start Your Collaboration</span>
             <HiArrowRight className="w-4 h-4" />

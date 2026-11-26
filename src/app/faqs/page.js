@@ -36,7 +36,7 @@ export default function FAQsPage() {
   ];
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">

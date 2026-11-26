@@ -34,25 +34,37 @@ export default async function LearnWithUsPage() {
   ];
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       {/* Hero Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#2855CE] text-xs font-black uppercase tracking-wider mb-3">
+          <div
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#2855CE] text-xs font-black uppercase tracking-wider mb-3 animate-mask-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             FREQUENT POSTERS ACADEMY
           </div>
-          <h1 className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight">
+          <h1
+            className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+            style={{ animationDelay: '180ms' }}
+          >
             Learn Digital Skills. <br />
             <span className="brand-gradient-text">Take Control of Your Business Online.</span>
           </h1>
-          <p className="text-lg text-slate-600 mt-4 leading-relaxed">
+          <p
+            className="text-lg text-slate-600 mt-4 leading-relaxed animate-mask-rise"
+            style={{ animationDelay: '280ms' }}
+          >
             No technical background? No problem. Practical, hands-on, live training to help you master social media, design, and digital tools at your own pace.
           </p>
         </div>
       </div>
 
       {/* Curriculum Modules Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
         <div className="mb-10">
           <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
             PRACTICAL CURRICULUM
@@ -66,7 +78,7 @@ export default async function LearnWithUsPage() {
           {modules.map((m, idx) => (
             <div
               key={idx}
-              className="bg-[#F5F8FF] border border-slate-200/80 rounded-2xl p-6 hover:border-blue-300 transition-all card-shadow hover:shadow-md"
+              className="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-2xl p-6 hover:border-blue-300 transition-all card-shadow hover:shadow-md"
             >
               <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center mb-4 shadow-sm">
                 {m.icon}
@@ -173,10 +185,10 @@ export default async function LearnWithUsPage() {
                     href={tier.ctaLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full text-center block text-xs font-extrabold py-3.5 rounded-xl transition-all ${
+                    className={`w-full text-center block text-sm font-bold py-3.5 rounded-xl transition-all ${
                       tier.isFeatured
-                        ? 'brand-gradient text-white shadow-md hover:shadow-lg'
-                        : 'bg-slate-100 hover:bg-[#2855CE] hover:text-white text-[#071957]'
+                        ? 'bg-[#071957] hover:bg-[#0f2878] text-white shadow-md hover:shadow-lg'
+                        : 'bg-slate-100 hover:bg-[#071957] hover:text-white text-[#071957]'
                     }`}
                   >
                     {tier.ctaText}

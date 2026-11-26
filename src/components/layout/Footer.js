@@ -19,18 +19,18 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#06143D] text-white pt-16 pb-10 border-t border-slate-800">
+    <footer className="relative z-20 bg-[#06143D] text-white pt-16 pb-10 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800/80">
           {/* Brand Info */}
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-2.5 inline-block">
+            <Link href="/" className="inline-block shrink-0">
               <img
-                src="/logo.png"
+                src="/logo-white.png"
                 alt="Frequent Posters Logo"
-                className="h-10 w-auto object-contain"
+                className="h-10 w-auto object-contain transition-transform duration-200 hover:scale-[1.02]"
               />
-            </div>
+            </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
               Premium creative design, branding and digital solutions based in Hyderabad. We transform ideas into unforgettable visual identities and hands-on business growth.
             </p>

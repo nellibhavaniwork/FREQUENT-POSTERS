@@ -48,23 +48,35 @@ export default async function AboutPage() {
   ];
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       {/* 1. Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7">
-            <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
+            <span
+              className="text-[11px] font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2 animate-mask-rise"
+              style={{ animationDelay: '80ms' }}
+            >
               OUR STORY
             </span>
-            <h1 className="text-3xl sm:text-5xl font-black text-[#071957] tracking-tight leading-tight">
+            <h1
+              className="text-3xl sm:text-5xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+              style={{ animationDelay: '180ms' }}
+            >
               Built on Creativity. <br />
               <span className="brand-gradient-text">Driven by Purpose.</span>
             </h1>
-            <p className="text-base sm:text-lg font-bold text-[#2855CE] mt-3">
+            <p
+              className="text-base sm:text-lg font-bold text-[#2855CE] mt-3 animate-mask-rise"
+              style={{ animationDelay: '280ms' }}
+            >
               Design Is What We Do. Helping Brands Express Themselves Is Why We Do It.
             </p>
           </div>
-          <div className="lg:col-span-5 hidden sm:block">
+          <div
+            className="lg:col-span-5 hidden sm:block animate-mask-rise"
+            style={{ animationDelay: '340ms' }}
+          >
             <div className="relative h-48 sm:h-56 rounded-3xl overflow-hidden shadow-xl border border-slate-200 group">
               <img
                 src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1000&auto=format&fit=crop"
@@ -80,7 +92,10 @@ export default async function AboutPage() {
       </div>
 
       {/* 2. Story Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-7 space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
             <p>
@@ -141,7 +156,7 @@ export default async function AboutPage() {
       </div>
 
       {/* 3. Core Values */}
-      <div className="bg-[#F5F8FF] py-20 border-y border-slate-200/60">
+      <div className="bg-[#F5F8FF]/70 backdrop-blur-xs py-20 border-y border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">

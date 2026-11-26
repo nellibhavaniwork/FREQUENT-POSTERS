@@ -30,10 +30,10 @@ export default function PortfolioClient({ initialProjects }) {
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
               selectedCategory === cat
-                ? 'brand-gradient text-white shadow-md'
-                : 'bg-[#F5F8FF] text-[#071957] border border-slate-200 hover:bg-slate-100'
+                ? 'bg-[#071957] text-white shadow-md'
+                : 'bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200/70 hover:text-[#071957]'
             }`}
           >
             {cat}
@@ -116,13 +116,13 @@ export default function PortfolioClient({ initialProjects }) {
                 href={`/contact?requirement=${encodeURIComponent(
                   `Interested in a project similar to ${activeModalItem.title}`
                 )}`}
-                className="brand-gradient text-white text-xs font-extrabold px-6 py-3.5 rounded-xl shadow-md"
+                className="bg-[#071957] hover:bg-[#0f2878] text-white text-sm font-bold px-7 py-3.5 rounded-xl shadow-md transition-all"
               >
                 Request Similar Work For Your Brand
               </Link>
               <button
                 onClick={() => setActiveModalItem(null)}
-                className="text-xs font-bold text-slate-500 hover:text-slate-800"
+                className="text-sm font-bold text-slate-500 hover:text-slate-800 cursor-pointer"
               >
                 Close Preview
               </button>

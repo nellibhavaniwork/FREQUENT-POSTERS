@@ -17,21 +17,33 @@ export default async function ReviewsPage() {
   ]);
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="max-w-3xl">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
+          <span
+            className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2 animate-mask-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             CLIENT FEEDBACK
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight">
+          <h1
+            className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+            style={{ animationDelay: '180ms' }}
+          >
             Trust Is Built Through Every Experience.
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed">
+          <p
+            className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed animate-mask-rise"
+            style={{ animationDelay: '280ms' }}
+          >
             We don’t believe in invented metrics or inflated ratings. Every testimonial below comes from real collaborations with founders and business owners.
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4">
+          <div
+            className="mt-6 flex flex-wrap items-center gap-4 animate-mask-rise"
+            style={{ animationDelay: '340ms' }}
+          >
             <a
               href={settings?.googleReviewsUrl || 'https://g.page/r/frequentposters/review'}
               target="_blank"
@@ -47,7 +59,10 @@ export default async function ReviewsPage() {
       </div>
 
       {/* Reviews Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials && testimonials.length > 0 ? (
             testimonials.map((review, idx) => (

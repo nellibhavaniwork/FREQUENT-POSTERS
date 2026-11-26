@@ -1,15 +1,18 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,800,700,600,500,400,300&display=swap');
 @import "tailwindcss";
 
 :root {
+  --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-satoshi: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --navy: #071957;
   --navy-dark: #05123d;
-  --blue: #2855CE;
-  --cyan: #36A9DB;
-  --teal: #36C6A0;
-  --soft-bg: #F5F8FF;
-  --ink: #111B42;
-  --muted: #64708E;
-  --line: #E5ECF7;
+  --blue: #1E40AF;
+  --cyan: #0284c7;
+  --teal: #0f766e;
+  --soft-bg: #F8FAFC;
+  --ink: #0F172A;
+  --muted: #475569;
+  --line: #E2E8F0;
 }
 
 * {
@@ -18,13 +21,27 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
   background-color: #FFFFFF;
-  color: #111B42;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0F172A;
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.025em;
+  font-weight: 700;
 }
 
 h1:not(.text-white),
@@ -33,25 +50,29 @@ h3:not(.text-white),
 h4:not(.text-white),
 h5:not(.text-white),
 h6:not(.text-white) {
-  color: #111B42;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  color: #071957;
 }
 
-/* Custom Utilities */
+/* Custom Utilities - Refined, high-end styling (no cheap gradients) */
 .brand-gradient {
-  background: linear-gradient(112deg, #2855CE 0%, #36A9DB 60%, #36C6A0 100%);
+  background: #071957;
+  color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-gradient:hover {
+  background: #0e2978;
 }
 
 .brand-gradient-text {
-  background: linear-gradient(112deg, #2855CE 0%, #36A9DB 60%, #36C6A0 100%);
+  background: linear-gradient(135deg, #071957 0%, #1e40af 60%, #2563eb 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .brand-navy-gradient {
-  background: linear-gradient(135deg, #071957 0%, #102573 50%, #0d3b8f 100%);
+  background: linear-gradient(135deg, #071957 0%, #0d226b 60%, #122f8a 100%);
 }
 
 .card-shadow {
@@ -104,3 +125,152 @@ h6:not(.text-white) {
 .animate-pulse-subtle {
   animation: pulseSubtle 4s ease-in-out infinite;
 }
+
+/* Mask Rise Text Animation (Hero & Content Loading) */
+@keyframes maskRise {
+  0% {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-mask-rise {
+  animation: maskRise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Wave Dots Loading Animation */
+@keyframes waveDotBounce {
+  0%, 100% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-16px) scale(1.22);
+    opacity: 1;
+  }
+}
+
+@keyframes waveShadowBounce {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(0.4);
+    opacity: 0.05;
+  }
+}
+
+.animate-wave-dot {
+  animation: waveDotBounce 1.25s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-wave-shadow {
+  animation: waveShadowBounce 1.25s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Scroll-Triggered Reveal Classes */
+.scroll-reveal-init {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-left.scroll-reveal-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-right.scroll-reveal-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.93) translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-scale.scroll-reveal-visible {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+}
+
+/* React Bits - Stack Component Styles */
+.stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.stack:focus-visible .stack-card[data-top] .stack-card-face {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.stack-card {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stack-card-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.stack-card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stack-card-content img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.stack-card-shade {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+}
+

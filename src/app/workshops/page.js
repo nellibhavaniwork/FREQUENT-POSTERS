@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { dbFind } from '../../lib/dbService.js';
 import { HiCheckCircle, HiArrowRight } from 'react-icons/hi2';
 import { FaWhatsapp } from 'react-icons/fa6';
+import MobilePricingCarousel from '../../components/common/MobilePricingCarousel.jsx';
 
 export const metadata = {
   title: 'Live Workshops & Training | Frequent Posters',
@@ -15,25 +16,41 @@ export default async function WorkshopsPage() {
   const pricing = await dbFind('pricing', { isPublished: true });
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 text-center">
         <div className="max-w-3xl mx-auto">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
+          <span
+            className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2 animate-mask-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             PRACTICAL WORKSHOPS &amp; PRICING
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight">
+          <h1
+            className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+            style={{ animationDelay: '180ms' }}
+          >
             Choose the Support Your Business Needs.
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed">
+          <p
+            className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed animate-mask-rise"
+            style={{ animationDelay: '280ms' }}
+          >
             From affordable live training workshops to complete full-stack agency branding, we offer transparent solutions tailored for measurable business growth.
           </p>
         </div>
       </div>
 
       {/* Main 3 Packages */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
+        {/* Mobile Carousel (Horizontal peek & blur slider for mobile view) */}
+        <MobilePricingCarousel pricing={pricing} />
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
           {pricing && pricing.length > 0 ? (
             pricing.map((tier, idx) => (
               <div
@@ -77,10 +94,10 @@ export default async function WorkshopsPage() {
                     href={tier.ctaLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full text-center block text-xs font-extrabold py-3.5 rounded-xl transition-all ${
+                    className={`w-full text-center block text-sm font-bold py-3.5 rounded-xl transition-all ${
                       tier.isFeatured
-                        ? 'brand-gradient text-white shadow-md hover:shadow-lg'
-                        : 'bg-white border border-slate-200 hover:bg-[#2855CE] hover:text-white text-[#071957]'
+                        ? 'bg-[#071957] hover:bg-[#0f2878] text-white shadow-md hover:shadow-lg'
+                        : 'bg-white border border-slate-200 hover:bg-[#071957] hover:text-white text-[#071957]'
                     }`}
                   >
                     {tier.ctaText}
@@ -101,13 +118,13 @@ export default async function WorkshopsPage() {
           <h2 className="text-2xl sm:text-4xl font-black !text-white" style={{ color: '#ffffff' }}>
             Your Brand Is Unique. Your Requirements Are Too.
           </h2>
-          <p className="text-slate-300 text-sm max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
             Need monthly creative retainers, 30 social media creatives, high-stakes investor pitch decks, or custom brand architecture? Let&apos;s build a scope together.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="brand-gradient text-white text-xs font-extrabold px-6 py-3.5 rounded-xl shadow-md hover:scale-105 transition-all inline-flex items-center gap-2"
+              className="bg-white hover:bg-slate-100 text-[#071957] text-sm font-bold px-7 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2"
             >
               <span>Request Custom Proposal</span>
               <HiArrowRight className="w-4 h-4" />
@@ -116,7 +133,7 @@ export default async function WorkshopsPage() {
               href="https://wa.me/917780271948?text=Hi%20Frequent%20Posters,%20I%20would%20like%20a%20custom%20quote%20for%20my%20business."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 hover:bg-white/20 text-white text-xs font-bold px-5 py-3.5 rounded-xl transition-all inline-flex items-center gap-2"
+              className="bg-white/10 hover:bg-white/20 text-white text-sm font-bold px-6 py-3.5 rounded-xl transition-all inline-flex items-center gap-2"
             >
               <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
               <span>Talk to Nelli Bhavani</span>

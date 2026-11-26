@@ -13,22 +13,34 @@ export default async function PortfolioPage() {
   const projects = await dbFind('portfolio', { isPublished: true });
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="max-w-3xl">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
+          <span
+            className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2 animate-mask-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             CREATIVE PORTFOLIO
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight">
+          <h1
+            className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+            style={{ animationDelay: '180ms' }}
+          >
             Ideas Brought to Life.
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed">
+          <p
+            className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed animate-mask-rise"
+            style={{ animationDelay: '280ms' }}
+          >
             Every project represents a tailored journey of strategy, visual harmony, and deliberate execution. Explore selected brand identities, social campaigns, and corporate designs below.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
         <PortfolioClient initialProjects={projects || []} />
       </div>
     </div>

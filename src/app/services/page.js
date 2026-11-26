@@ -32,30 +32,42 @@ export default async function ServicesPage() {
   };
 
   return (
-    <div className="py-16 sm:py-24 bg-white">
+    <div className="py-16 sm:py-24 bg-transparent">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="max-w-3xl">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2">
+          <span
+            className="text-xs font-extrabold uppercase tracking-widest text-[#2855CE] block mb-2 animate-mask-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             OUR CREATIVE EXPERTISE
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight">
+          <h1
+            className="text-4xl sm:text-6xl font-black text-[#071957] tracking-tight leading-tight animate-mask-rise"
+            style={{ animationDelay: '180ms' }}
+          >
             One Brand Partner. <br />
             <span className="brand-gradient-text">Endless Creative Possibilities.</span>
           </h1>
-          <p className="text-xl font-bold text-[#2855CE] mt-4">
+          <p
+            className="text-xl font-bold text-[#2855CE] mt-4 animate-mask-rise"
+            style={{ animationDelay: '280ms' }}
+          >
             Everything You Need to Look Professional and Stay Connected.
           </p>
         </div>
       </div>
 
       {/* Services List / Detailed Cards */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 animate-mask-rise"
+        style={{ animationDelay: '380ms' }}
+      >
         {services && services.length > 0 ? (
           services.map((service, idx) => (
             <div
               key={service._id || idx}
-              className="bg-[#F5F8FF] border border-slate-200/90 rounded-3xl p-8 sm:p-12 hover:border-blue-300 transition-all card-shadow"
+              className="bg-white/80 backdrop-blur-md border border-slate-200/90 rounded-3xl p-8 sm:p-12 hover:border-blue-300 transition-all card-shadow"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div className="lg:col-span-5 space-y-4">
@@ -77,7 +89,7 @@ export default async function ServicesPage() {
                   <div className="pt-2 flex flex-wrap gap-3">
                     <Link
                       href={`/contact?service=${encodeURIComponent(service.title)}`}
-                      className="brand-gradient text-white text-xs font-extrabold px-5 py-3 rounded-xl shadow-md hover:scale-105 transition-all flex items-center gap-2"
+                      className="bg-[#071957] hover:bg-[#0f2878] text-white text-sm font-bold px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2"
                     >
                       <span>Enquire for this service</span>
                       <HiArrowRight className="w-4 h-4" />
@@ -88,7 +100,7 @@ export default async function ServicesPage() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-white border border-slate-200 text-[#071957] text-xs font-bold px-4 py-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-1.5"
+                      className="bg-white border border-slate-200 text-[#071957] text-sm font-bold px-5 py-3.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-1.5"
                     >
                       <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
                       <span>WhatsApp Us</span>

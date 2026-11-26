@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, Lock, User, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import CloudinaryUploader from '../../../../components/admin/CloudinaryUploader.js';
+import HeroCardsManager from '../../../../components/admin/HeroCardsManager.js';
 import { showSuccessAlert, showErrorAlert } from '../../../../lib/alerts.js';
 
 export default function SettingsCMSClient({ initialSettings, adminEmail }) {
@@ -261,20 +262,34 @@ export default function SettingsCMSClient({ initialSettings, adminEmail }) {
           />
         </div>
 
+        {/* 4. Hero Interactive Card Stack */}
+        <div className="pt-4 border-t border-slate-100">
+          <HeroCardsManager
+            cards={settings.heroStackCards || []}
+            onChange={(newCards) => setSettings({ ...settings, heroStackCards: newCards })}
+            layout={settings.heroStackLayout || 'pile'}
+            onLayoutChange={(newLayout) => setSettings({ ...settings, heroStackLayout: newLayout })}
+            autoplay={settings.heroStackAutoplay !== false}
+            onAutoplayChange={(newAutoplay) => setSettings({ ...settings, heroStackAutoplay: newAutoplay })}
+            autoplayDelay={settings.heroStackDelay || 2500}
+            onDelayChange={(newDelay) => setSettings({ ...settings, heroStackDelay: newDelay })}
+          />
+        </div>
+
         <button
           type="submit"
           disabled={loading}
           className="brand-gradient text-white text-xs font-extrabold px-8 py-3.5 rounded-xl shadow-md disabled:opacity-60 flex items-center gap-2"
         >
           {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-          <span>{loading ? 'Saving Settings...' : 'Save Website Settings'}</span>
+          <span>{loading ? 'Saving Settings...' : 'Save Website Settings & Hero Cards'}</span>
         </button>
       </form>
 
-      {/* 4. Admin Security & Credentials Form */}
+      {/* 5. Admin Security & Credentials Form */}
       <form onSubmit={handlePasswordChange} className="bg-white border border-slate-200 rounded-3xl p-8 card-shadow space-y-5">
         <h2 className="text-lg font-black text-[#071957] border-b border-slate-100 pb-3">
-          4. Admin Security & Credentials
+          5. Admin Security & Credentials
         </h2>
 
         {pwdSuccess && (
